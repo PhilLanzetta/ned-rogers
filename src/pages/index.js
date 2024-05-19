@@ -51,6 +51,7 @@ export const query = graphql`
   query {
     contentfulHomePage {
       tiles {
+        id
         desktopAlignment
         desktopWidth
         mobileAlignment
