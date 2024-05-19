@@ -1,5 +1,6 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { Link } from 'gatsby-plugin-modal-routing-3'
 
 const ProjectTile = ({ tile, mobile }) => {
   const {
@@ -9,6 +10,7 @@ const ProjectTile = ({ tile, mobile }) => {
     mobileAlignment,
     desktopWidth,
     desktopAlignment,
+    project,
   } = tile
   let alignment
   if (mobile) {
@@ -36,13 +38,18 @@ const ProjectTile = ({ tile, mobile }) => {
   }
 
   return (
-    <div className='project-tile' style={styles}>
+    <Link
+      to={`/${project.slug}`}
+      asModal
+      className='project-tile'
+      style={styles}
+    >
       <GatsbyImage
         image={featuredImage.gatsbyImageData}
         alt={featuredImage.description}
       ></GatsbyImage>
       {title}
-    </div>
+    </Link>
   )
 }
 

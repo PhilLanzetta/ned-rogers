@@ -1,0 +1,13 @@
+diff --git a/node_modules/gatsby-plugin-modal-routing-3/wrapPageElement.js b/node_modules/gatsby-plugin-modal-routing-3/wrapPageElement.js
+index 658931b..c77c03f 100644
+--- a/node_modules/gatsby-plugin-modal-routing-3/wrapPageElement.js
++++ b/node_modules/gatsby-plugin-modal-routing-3/wrapPageElement.js
+@@ -93,7 +93,7 @@ var WrapPageElement = /*#__PURE__*/function (_React$Component) {
+         lastModalProps = _this$state.lastModalProps;
+     var isModal = prevProps && (0, _get2.default)(location, 'state.modal');
+     var resources = isModal ? prevProps.pageResources : pageResources; // the page is the previous path if this is a modal, otherwise it's the current path
+-
++    pageResources.component = pageResources.component ? pageResources.component.default ? pageResources.component.default : pageResources.component : pageResources.component
+     var pageElement = isModal ? /*#__PURE__*/_react.default.createElement(prevProps.pageResources.component, (0, _extends2.default)({}, prevProps, {
+       key: prevProps.pageResources.page.path
+     })) : /*#__PURE__*/_react.default.createElement(pageResources.component, (0, _extends2.default)({}, this.props, {

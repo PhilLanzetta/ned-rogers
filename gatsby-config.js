@@ -20,6 +20,7 @@ module.exports = {
     },
     'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-modal-routing-3',
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-manifest',

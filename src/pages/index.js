@@ -60,6 +60,9 @@ export const query = graphql`
           gatsbyImageData
           description
         }
+        project {
+          slug
+        }
       }
     }
   }
