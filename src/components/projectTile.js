@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby-plugin-modal-routing-3'
+import useOnScreen from '../utils/useOnScreen'
 
 const ProjectTile = ({ tile, mobile }) => {
   const {
@@ -12,6 +13,8 @@ const ProjectTile = ({ tile, mobile }) => {
     desktopAlignment,
     project,
   } = tile
+  const elementRef = useRef(null)
+  const isOnScreen = useOnScreen(elementRef)
   let alignment
   if (mobile) {
     if (mobileAlignment === 'left') {
@@ -38,17 +41,17 @@ const ProjectTile = ({ tile, mobile }) => {
   }
 
   return (
-    <Link
-      to={`/${project.slug}`}
-      asModal
-      className='project-tile'
-      style={styles}
-    >
-      <GatsbyImage
-        image={featuredImage.gatsbyImageData}
-        alt={featuredImage.description}
-      ></GatsbyImage>
-      {title}
+    <Link to={`/${project.slug}`} asModal style={styles}>
+      <div
+        ref={elementRef}
+        className={isOnScreen ? 'project-tile-show' : 'project-tile-hide'}
+      >
+        <GatsbyImage
+          image={featuredImage.gatsbyImageData}
+          alt={featuredImage.description}
+        ></GatsbyImage>
+        {title}
+      </div>
     </Link>
   )
 }

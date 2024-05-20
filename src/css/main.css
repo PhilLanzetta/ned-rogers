@@ -94,11 +94,13 @@ button {
   width: calc(100% + 30px);
   margin-left: -15px;
   padding: 15px;
-  border-top: 1px solid rgba(0,0,0,0.5);
-  border-bottom: 1px solid rgba(0,0,0,0.5);
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.mobile-view-options, .mobile-category-links, .mobile-information {
+.mobile-view-options,
+.mobile-category-links,
+.mobile-information {
   width: 33.3%;
   display: flex;
   gap: 10px;
@@ -157,8 +159,24 @@ button {
   gap: 50px;
 }
 
-.project-tile {
+.project-tile-show {
   text-transform: uppercase;
+  animation: blurOn 700ms forwards;
+}
+
+.project-tile-hide {
+  opacity: 0;
+}
+
+@keyframes blurOn {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
 }
 
 .ReactModal__Overlay {
@@ -173,7 +191,7 @@ button {
 .ReactModal__Overlay--before-close {
   opacity: 0;
 }
- 
+
 .ReactModal__Content {
   transform: translateY(50px);
   transition: transform 500ms ease-out;
