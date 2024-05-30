@@ -161,7 +161,7 @@ button {
 
 .project-tile-show {
   text-transform: uppercase;
-  animation: blurOn 700ms forwards;
+  animation: blurOn 1s forwards;
 }
 
 .project-tile-hide {
@@ -182,6 +182,7 @@ button {
 .ReactModal__Overlay {
   opacity: 0;
   transition: opacity 500ms ease-out;
+  backdrop-filter: blur(8px);
 }
 
 .ReactModal__Overlay--after-open {
@@ -214,4 +215,9 @@ button {
 .project-media-container {
   width: 75%;
   margin-left: 12.5%;
+}
+
+.tile-image {
+  width: 100%;
+  height: 100%;
 }

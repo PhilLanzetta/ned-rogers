@@ -20,7 +20,39 @@ module.exports = {
     },
     'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-modal-routing-3',
+    {
+      resolve: `gatsby-plugin-modal-routing-3`,
+      options: {
+        appElement: '#___gatsby',
+        modalProps: {
+          style: {
+            overlay: {
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(255, 255, 255, 0.75)',
+            },
+            content: {
+              position: 'absolute',
+              top: '40px',
+              left: '40px',
+              right: '40px',
+              bottom: '40px',
+              border: 'none',
+              background: 'none',
+              overflow: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              borderRadius: '0px',
+              outline: 'none',
+              padding: '20px',
+            },
+          },
+          closeTimeoutMS: 1000,
+        },
+      },
+    },
     'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-manifest',

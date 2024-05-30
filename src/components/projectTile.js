@@ -49,6 +49,7 @@ const ProjectTile = ({ tile, mobile }) => {
         <GatsbyImage
           image={featuredImage.gatsbyImageData}
           alt={featuredImage.description}
+          className='tile-image'
         ></GatsbyImage>
         {title}
       </div>
