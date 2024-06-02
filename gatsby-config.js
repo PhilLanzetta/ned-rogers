@@ -50,6 +50,8 @@ module.exports = {
             },
           },
           closeTimeoutMS: 1000,
+          preventScroll: true,
+          htmlOpenClassName: 'ReactModal__Html--open',
         },
       },
     },

@@ -29,6 +29,7 @@ html {
   font-weight: var(--primary-weight);
   overflow-x: hidden;
   width: 100vw;
+  height: 100vh;
 }
 
 a {
@@ -191,6 +192,10 @@ button {
 
 .ReactModal__Overlay--before-close {
   opacity: 0;
+}
+
+.ReactModal__Html--open {
+  overflow: hidden;
 }
 
 .modal-close {
