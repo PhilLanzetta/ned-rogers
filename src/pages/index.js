@@ -1,8 +1,9 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import useWindowSize from '../utils/useWindowSize'
 import ProjectTile from '../components/projectTile'
+import ProjectListing from '../components/projectListing'
 
 const IndexPage = ({ data }) => {
   const allNodes = data.contentfulHomePage.tiles
@@ -18,28 +19,38 @@ const IndexPage = ({ data }) => {
   })
   const { width } = useWindowSize()
   const isMobile = width < 900
+  const [view, setView] = useState('grid')
 
+  console.log(view)
   return (
-    <Layout>
+    <Layout view={view} setView={setView}>
       <div className='tile-page'>
-        {isMobile ? (
-          <div className='project-tile-inner-mobile'>
-            {allNodes.map((node) => (
-              <ProjectTile key={node.id} tile={node} mobile></ProjectTile>
-            ))}
-          </div>
+        {view === 'grid' ? (
+          isMobile ? (
+            <div className='project-tile-inner-mobile'>
+              {allNodes.map((node) => (
+                <ProjectTile key={node.id} tile={node} mobile></ProjectTile>
+              ))}
+            </div>
+          ) : (
+            <div className='project-tile-outer'>
+              <div className='project-tile-inner'>
+                {leftSideNodes.map((node) => (
+                  <ProjectTile key={node.id} tile={node}></ProjectTile>
+                ))}
+              </div>
+              <div className='project-tile-inner'>
+                {rightSideNodes.map((node) => (
+                  <ProjectTile key={node.id} tile={node}></ProjectTile>
+                ))}
+              </div>
+            </div>
+          )
         ) : (
-          <div className='project-tile-outer'>
-            <div className='project-tile-inner'>
-              {leftSideNodes.map((node) => (
-                <ProjectTile key={node.id} tile={node}></ProjectTile>
-              ))}
-            </div>
-            <div className='project-tile-inner'>
-              {rightSideNodes.map((node) => (
-                <ProjectTile key={node.id} tile={node}></ProjectTile>
-              ))}
-            </div>
+          <div className='project-list-view'>
+            {allNodes.map((node) => (
+              <ProjectListing key={node.id} listing={node}></ProjectListing>
+            ))}
           </div>
         )}
       </div>
