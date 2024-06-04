@@ -54,6 +54,7 @@ button {
 .navbar {
   width: 100%;
   position: fixed;
+  z-index: 10;
   top: 0;
   left: 0;
   padding: 50px 45px;
@@ -188,6 +189,7 @@ button {
 
 .ReactModal__Overlay--after-open {
   opacity: 1;
+  z-index: 50;
 }
 
 .ReactModal__Overlay--before-close {
@@ -199,14 +201,23 @@ button {
 }
 
 .modal-close {
-  position: absolute;
-  right: 20px;
-  top: 20px;
+  position: fixed;
+  right: 40px;
+  top: 40px;
+  z-index: 100;
+}
+
+.page-title {
+  position: fixed;
+  left: 40px;
+  top: 40px;
+  z-index: 100;
 }
 
 .project-media-container {
   width: 75%;
   margin-left: 12.5%;
+  padding-top: 20px;
 }
 
 .tile-image {
