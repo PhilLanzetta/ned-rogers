@@ -15,21 +15,49 @@ const Header = ({ view, setView }) => {
           </Link>
           <div className='mobile-options'>
             <div className='mobile-view-options'>
-              <button className='view-button' onClick={() => setView('grid')}>
+              <button
+                className={
+                  view === 'grid' ? 'view-button active-link' : 'view-button'
+                }
+                onClick={() => {
+                  localStorage.setItem('view', 'grid')
+                  setView('grid')
+                }}
+              >
                 Grid
               </button>
-              <button className='view-button' onClick={() => setView('list')}>
+              <button
+                className={
+                  view === 'list' ? 'view-button active-link' : 'view-button'
+                }
+                onClick={() => {
+                  localStorage.setItem('view', 'list')
+                  setView('list')
+                }}
+              >
                 List
               </button>
             </div>
             <div className='mobile-category-links'>
-              <Link to='/' className='header-link'>
+              <Link
+                to='/motion'
+                className='header-link'
+                activeClassName='active-link'
+              >
                 Motion
               </Link>
-              <Link to='/' className='header-link'>
+              <Link
+                to='/still'
+                className='header-link'
+                activeClassName='active-link'
+              >
                 Still
               </Link>
-              <Link to='/' className='header-link'>
+              <Link
+                to='/'
+                className='header-link'
+                activeClassName='active-link'
+              >
                 All
               </Link>
             </div>
@@ -43,10 +71,18 @@ const Header = ({ view, setView }) => {
       ) : (
         <div className='desktop-link-container'>
           <div className='category-links'>
-            <Link to='/' className='header-link'>
+            <Link
+              to='/motion'
+              className='header-link'
+              activeClassName='active-link'
+            >
               Motion
             </Link>
-            <Link to='/' className='header-link'>
+            <Link
+              to='/still'
+              className='header-link'
+              activeClassName='active-link'
+            >
               Still
             </Link>
             <Link to='/' className='header-link' activeClassName='active-link'>

@@ -228,6 +228,18 @@ button {
   position: relative;
 }
 
+.module-video-player {
+  aspect-ratio: 16 / 9;
+  position: relative;
+}
+
+.main-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .project-list-view {
   display: flex;
   flex-direction: column;
@@ -270,7 +282,7 @@ button {
 }
 
 .active-link::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 100%;
   text-align: center;
