@@ -57,10 +57,22 @@ const Header = ({ view, setView }) => {
             Ned Rogers
           </Link>
           <div className='view-options'>
-            <button className='view-button' onClick={() => setView('grid')}>
+            <button
+              className='view-button'
+              onClick={() => {
+                localStorage.setItem('view', 'grid')
+                setView('grid')
+              }}
+            >
               Grid
             </button>
-            <button className='view-button' onClick={() => setView('list')}>
+            <button
+              className='view-button'
+              onClick={() => {
+                localStorage.setItem('view', 'list')
+                setView('list')
+              }}
+            >
               List
             </button>
           </div>

@@ -213,6 +213,10 @@ button {
   width: 100%;
 }
 
+.project-tile {
+  position: relative;
+}
+
 .project-list-view {
   display: flex;
   flex-direction: column;
@@ -228,8 +232,26 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
   max-height: 60vh;
-  max-width: 40vw;
+  max-width: 60vw;
   border: none;
+}
+
+.project-listing-link {
+  max-height: 100%;
+  max-width: 100%;
+  display: flex;
+}
+
+.video-project-link {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+}
+
+.project-tile-title {
+  padding-top: 5px;
 }
 
 @media screen and (max-width: 700px) {

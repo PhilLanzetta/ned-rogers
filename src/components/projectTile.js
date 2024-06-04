@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby-plugin-modal-routing-3'
 import useOnScreen from '../utils/useOnScreen'
+import VideoTile from './videoTile'
 
 const ProjectTile = ({ tile, mobile }) => {
   const {
@@ -11,6 +12,7 @@ const ProjectTile = ({ tile, mobile }) => {
     mobileAlignment,
     desktopWidth,
     desktopAlignment,
+    featuredVideo,
     project,
   } = tile
   const elementRef = useRef(null)
@@ -41,17 +43,21 @@ const ProjectTile = ({ tile, mobile }) => {
   }
 
   return (
-    <Link to={`/${project.slug}`} asModal style={styles}>
+    <Link to={`/${project.slug}`} asModal style={styles} className="project-tile">
       <div
         ref={elementRef}
         className={isOnScreen ? 'project-tile-show' : 'project-tile-hide'}
       >
-        <GatsbyImage
-          image={featuredImage.gatsbyImageData}
-          alt={featuredImage.description}
-          className='tile-image'
-        ></GatsbyImage>
-        {title}
+        {featuredVideo ? (
+          <VideoTile id={featuredVideo} slug={project.slug}></VideoTile>
+        ) : (
+          <GatsbyImage
+            image={featuredImage.gatsbyImageData}
+            alt={featuredImage.description}
+            className='tile-image'
+          ></GatsbyImage>
+        )}
+        <div className='project-tile-title'>{title}</div>
       </div>
     </Link>
   )

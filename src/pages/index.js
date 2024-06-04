@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import useWindowSize from '../utils/useWindowSize'
@@ -21,7 +21,14 @@ const IndexPage = ({ data }) => {
   const isMobile = width < 900
   const [view, setView] = useState('grid')
 
-  console.log(view)
+  useEffect(() => {
+    if (localStorage.getItem('view')) {
+      setView(localStorage.getItem('view'))
+    } else {
+      setView('grid')
+    }
+  }, [])
+  
   return (
     <Layout view={view} setView={setView}>
       <div className='tile-page'>
@@ -72,6 +79,7 @@ export const query = graphql`
           gatsbyImageData
           description
         }
+        featuredVideo
         project {
           slug
         }
