@@ -213,7 +213,7 @@ button {
   width: 100%;
 }
 
-.project-tile {
+.video-module {
   position: relative;
 }
 
@@ -252,6 +252,21 @@ button {
 
 .project-tile-title {
   padding-top: 5px;
+}
+
+.active-link {
+  position: relative;
+}
+
+.active-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  height: 1px;
+  background-color: #000;
+  bottom: 0px;
+  left: 0px;
 }
 
 @media screen and (max-width: 700px) {

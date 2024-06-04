@@ -49,7 +49,7 @@ const Header = ({ view, setView }) => {
             <Link to='/' className='header-link'>
               Still
             </Link>
-            <Link to='/' className='header-link'>
+            <Link to='/' className='header-link' activeClassName='active-link'>
               All
             </Link>
           </div>
@@ -58,7 +58,9 @@ const Header = ({ view, setView }) => {
           </Link>
           <div className='view-options'>
             <button
-              className='view-button'
+              className={
+                view === 'grid' ? 'view-button active-link' : 'view-button'
+              }
               onClick={() => {
                 localStorage.setItem('view', 'grid')
                 setView('grid')
@@ -67,7 +69,9 @@ const Header = ({ view, setView }) => {
               Grid
             </button>
             <button
-              className='view-button'
+              className={
+                view === 'list' ? 'view-button active-link' : 'view-button'
+              }
               onClick={() => {
                 localStorage.setItem('view', 'list')
                 setView('list')

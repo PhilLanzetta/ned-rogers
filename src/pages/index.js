@@ -28,35 +28,42 @@ const IndexPage = ({ data }) => {
       setView('grid')
     }
   }, [])
-  
+
   return (
     <Layout view={view} setView={setView}>
       <div className='tile-page'>
         {view === 'grid' ? (
           isMobile ? (
             <div className='project-tile-inner-mobile'>
-              {allNodes.map((node) => (
-                <ProjectTile key={node.id} tile={node} mobile></ProjectTile>
+              {allNodes.map((node, index) => (
+                <ProjectTile
+                  key={node.id + index}
+                  tile={node}
+                  mobile
+                ></ProjectTile>
               ))}
             </div>
           ) : (
             <div className='project-tile-outer'>
               <div className='project-tile-inner'>
-                {leftSideNodes.map((node) => (
-                  <ProjectTile key={node.id} tile={node}></ProjectTile>
+                {leftSideNodes.map((node, index) => (
+                  <ProjectTile key={node.id + index} tile={node}></ProjectTile>
                 ))}
               </div>
               <div className='project-tile-inner'>
-                {rightSideNodes.map((node) => (
-                  <ProjectTile key={node.id} tile={node}></ProjectTile>
+                {rightSideNodes.map((node, index) => (
+                  <ProjectTile key={node.id + index} tile={node}></ProjectTile>
                 ))}
               </div>
             </div>
           )
         ) : (
           <div className='project-list-view'>
-            {allNodes.map((node) => (
-              <ProjectListing key={node.id} listing={node}></ProjectListing>
+            {allNodes.map((node, index) => (
+              <ProjectListing
+                key={node.id + index}
+                listing={node}
+              ></ProjectListing>
             ))}
           </div>
         )}
