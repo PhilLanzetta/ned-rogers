@@ -292,6 +292,37 @@ button {
   left: 0px;
 }
 
+.video-controls {
+  position: absolute;
+  padding: 10px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.95));
+}
+
+.controls-container {
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.controls-container > div {
+  width: 33%;
+}
+
+.seek-and-play-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sound-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
 @media screen and (max-width: 700px) {
   .project-media-container {
     width: 100%;

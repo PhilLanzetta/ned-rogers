@@ -1,41 +1,10 @@
 import React, { forwardRef } from 'react'
 import { motion } from 'framer-motion'
 import Slider from '@mui/material/Slider'
-import { styled } from '@mui/material/styles'
-
-const PrettoSlider = styled(Slider)({
-  root: {
-    height: '20px',
-    color: '#9556CC',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  thumb: {
-    height: 20,
-    width: 20,
-    backgroundColor: '#9556CC',
-    border: '2px solid currentColor',
-    marginTop: -3,
-    marginLeft: -12,
-    '&:focus, &:hover, &$active': {
-      boxShadow: 'inherit',
-    },
-  },
-  active: {},
-  valueLabel: {
-    left: 'calc(-50% + 4px)',
-  },
-  track: {
-    height: 5,
-    borderRadius: 4,
-    width: '100%',
-  },
-  rail: {
-    height: 5,
-    borderRadius: 4,
-  },
-})
+import back from '../images/rewind.svg'
+import playPauseSvg from '../images/playPause.svg'
+import forward from '../images/forward.svg'
+import sound from '../images/sound.svg'
 
 const Control = forwardRef((props, controlRef) => {
   const {
@@ -58,16 +27,47 @@ const Control = forwardRef((props, controlRef) => {
   return (
     <div className='video-controls' ref={controlRef}>
       <div className='progress-bar'>
-        <PrettoSlider
+        <Slider
           min={0}
           max={100}
           value={played * 100}
           onChange={onSeek}
           onChangeCommitted={onSeekMouseUp}
           onMouseDown={onMouseSeekDown}
+          sx={{
+            '& .MuiSlider-thumb': {
+              color: '#fff',
+              height: '10px',
+              width: '10px',
+            },
+            '& .MuiSlider-track': {
+              color: '#fff',
+              height: '2px',
+            },
+            '& .MuiSlider-rail': {
+              color: '#fff',
+              height: '2px',
+            },
+          }}
         />
       </div>
-      <div className='controls-container'></div>
+      <div className='controls-container'>
+        <div>
+          {currentTime} / {duration}
+        </div>
+        <div className='seek-and-play-controls'>
+          <img src={back} alt='seek back' onClick={onRewind}></img>
+          <img
+            src={playPauseSvg}
+            alt='play or pause'
+            onClick={onPlayPause}
+          ></img>
+          <img src={forward} alt='seek forward' onClick={onForward}></img>
+        </div>
+        <div className='sound-container'>
+          <img src={sound} alt='sound icon'></img>
+        </div>
+      </div>
     </div>
   )
 })

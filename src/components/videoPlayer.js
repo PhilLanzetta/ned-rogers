@@ -10,7 +10,8 @@ let count = 0
 const VideoPlayer = ({ title, videoId }) => {
   const videoPlayerRef = useRef(null)
   const controlRef = useRef(null)
-  const defaultProps = {
+
+  const [videoState, setVideoState] = useState({
     playing: false,
     muted: false,
     volume: 1,
@@ -18,9 +19,7 @@ const VideoPlayer = ({ title, videoId }) => {
     played: 0,
     seeking: false,
     buffer: true,
-  }
-
-  const [videoState, setVideoState] = useState(defaultProps)
+  })
 
   //Destructuring the properties from the videoState
   const { playing, muted, volume, playbackRate, played, seeking, buffer } =
@@ -43,18 +42,21 @@ const VideoPlayer = ({ title, videoId }) => {
 
   const rewindHandler = () => {
     //Rewinds the video player reducing 5
-    videoPlayerRef.current.seekTo(videoPlayerRef.current.getCurrentTime() - 5)
+    if (videoPlayerRef.current.getCurrentTime() > 5) {
+      videoPlayerRef.current.seekTo(videoPlayerRef.current.getCurrentTime() - 5)
+    } else {
+      videoPlayerRef.current.seekTo(0)
+    }
   }
 
   const handleFastFoward = () => {
-    //FastFowards the video player by adding 10
-    videoPlayerRef.current.seekTo(videoPlayerRef.current.getCurrentTime() + 10)
+    //FastFowards the video player by adding 5
+    videoPlayerRef.current.seekTo(videoPlayerRef.current.getCurrentTime() + 5)
   }
 
   //console.log("========", (controlRef.current.style.visibility = "false"));
   const progressHandler = (state) => {
-    console.log(count)
-    if (count > 3) {
+    if (count > 15) {
       controlRef.current.style.visibility = 'hidden' // toggling player control container
     } else {
       count += 1
@@ -122,13 +124,14 @@ const VideoPlayer = ({ title, videoId }) => {
   }
 
   return (
-    <div className='video-module'>
+    <div className='video-module' onMouseMove={mouseMoveHandler}>
       <ReactPlayer
         url={`https://player.vimeo.com/video/${videoId}`}
         ref={videoPlayerRef}
         width={'100%'}
         height={'100%'}
         className='module-video-player'
+        progressInterval={1}
         controls={false}
         playing={playing}
         playsinline
@@ -146,7 +149,7 @@ const VideoPlayer = ({ title, videoId }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className='main-play'
-            onClick={playPauseHandler}
+            onClick={() => setVideoState({ ...videoState, playing: true })}
           >
             <img src={play} alt='play'></img>
           </motion.button>
