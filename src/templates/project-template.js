@@ -19,6 +19,7 @@ const Project = ({ data }) => {
             let alignment
             if (item.desktopAlignment === 'left') {
               alignment = 'left'
+              clear = 'both'
             } else if (item.desktopAlignment === 'right') {
               alignment = 'right'
             } else {

@@ -16,6 +16,9 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.19",
     "framer-motion": "^11.2.10",
     "gatsby": "^5.13.3",
     "gatsby-plugin-image": "^3.13.1",
