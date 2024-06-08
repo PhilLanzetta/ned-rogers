@@ -17,13 +17,16 @@ const Project = ({ data }) => {
         {media.map((item) => {
           if (item.imageMediaId) {
             let alignment
+            let clearValue
             if (item.desktopAlignment === 'left') {
               alignment = 'left'
-              clear = 'both'
+              clearValue = 'both'
             } else if (item.desktopAlignment === 'right') {
               alignment = 'right'
+              clearValue = 'none'
             } else {
               alignment = 'center'
+              clearValue = 'none'
             }
             let styles
             if (isMobile) {
@@ -33,6 +36,7 @@ const Project = ({ data }) => {
                 width: `${item.desktopWidth}%`,
                 float: alignment,
                 padding: '20px',
+                clear: clearValue
               }
             }
             return (
