@@ -214,6 +214,17 @@ button {
   z-index: 100;
 }
 
+.page-container {
+  position: absolute;
+  inset: clamp(0px, 2vw, 40px);
+  border: none;
+  background: none;
+  overflow: auto;
+  border-radius: 0px;
+  outline: none;
+  padding: clamp(0px, 2vw, 20px);
+}
+
 .project-media-container {
   width: 75%;
   margin-left: 12.5%;
@@ -299,7 +310,7 @@ button {
   left: 0;
   right: 0;
   z-index: 100;
-  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.95));
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.95));
 }
 
 .controls-container {
@@ -318,9 +329,32 @@ button {
   gap: 10px;
 }
 
+.seek-and-play-controls img {
+  cursor: pointer;
+}
+
 .sound-container {
   display: flex;
+  gap: 10px;
   justify-content: flex-end;
+}
+
+.controls-hide {
+  opacity: 0;
+  transition: all 700ms;
+}
+
+.controls-show {
+  opacity: 1;
+  transition: all 700ms;
+}
+
+.full-screen-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 700px) {

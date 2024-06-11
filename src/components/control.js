@@ -6,6 +6,7 @@ import playPauseSvg from '../images/playPause.svg'
 import forward from '../images/forward.svg'
 import sound from '../images/sound.svg'
 
+
 const Control = forwardRef((props, controlRef) => {
   const {
     onPlayPause,
@@ -23,9 +24,15 @@ const Control = forwardRef((props, controlRef) => {
     duration,
     currentTime,
     onMouseSeekDown,
+    userInteraction,
   } = props
   return (
-    <div className='video-controls' ref={controlRef}>
+    <div
+      className={`video-controls ${
+        userInteraction ? 'controls-show' : 'controls-hide'
+      }`}
+      ref={controlRef}
+    >
       <div className='progress-bar'>
         <Slider
           min={0}
@@ -66,6 +73,27 @@ const Control = forwardRef((props, controlRef) => {
         </div>
         <div className='sound-container'>
           <img src={sound} alt='sound icon'></img>
+          <Slider
+            onChange={onVolumeChangeHandler}
+            value={volume * 100}
+            onChangeCommitted={onVolumeSeekUp}
+            sx={{
+              width: '50%',
+              '& .MuiSlider-thumb': {
+                color: '#fff',
+                height: '10px',
+                width: '10px',
+              },
+              '& .MuiSlider-track': {
+                color: '#fff',
+                height: '2px',
+              },
+              '& .MuiSlider-rail': {
+                color: '#fff',
+                height: '2px',
+              },
+            }}
+          />
         </div>
       </div>
     </div>

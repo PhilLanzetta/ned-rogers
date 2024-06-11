@@ -43,8 +43,14 @@ const ProjectTile = ({ tile, mobile }) => {
   }
 
   return (
-    <Link to={`/${project.slug}`} asModal style={styles} className="project-tile">
+    <Link
+      to={`/${project.slug}`}
+      asModal
+      style={styles}
+      className='project-tile'
+    >
       <div
+        id={project.id}
         ref={elementRef}
         className={isOnScreen ? 'project-tile-show' : 'project-tile-hide'}
       >

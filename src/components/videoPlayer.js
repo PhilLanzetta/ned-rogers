@@ -4,12 +4,15 @@ import { AnimatePresence, motion } from 'framer-motion'
 import play from '../images/play.svg'
 import Control from './control'
 import { formatTime } from '../utils/formatTIme'
+import full from '../images/fullScreen.svg'
+import screenfull from 'screenfull'
 
 let count = 0
 
 const VideoPlayer = ({ title, videoId }) => {
   const videoPlayerRef = useRef(null)
   const controlRef = useRef(null)
+  const fullScreenRef = useRef(null)
 
   const [videoState, setVideoState] = useState({
     playing: false,
@@ -20,6 +23,8 @@ const VideoPlayer = ({ title, videoId }) => {
     seeking: false,
     buffer: true,
   })
+
+  const [userInteraction, setUserInteraction] = useState(false)
 
   //Destructuring the properties from the videoState
   const { playing, muted, volume, playbackRate, played, seeking, buffer } =
@@ -57,7 +62,8 @@ const VideoPlayer = ({ title, videoId }) => {
   //console.log("========", (controlRef.current.style.visibility = "false"));
   const progressHandler = (state) => {
     if (count > 15) {
-      controlRef.current.style.visibility = 'hidden' // toggling player control container
+      controlRef.current.style.visibility = 'hidden'
+      fullScreenRef.current.style.visibility = 'hidden' // toggling player control container
     } else {
       count += 1
     }
@@ -110,6 +116,7 @@ const VideoPlayer = ({ title, videoId }) => {
 
   const mouseMoveHandler = () => {
     controlRef.current.style.visibility = 'visible'
+    fullScreenRef.current.style.visibility = 'visible'
     count = 0
   }
 
@@ -121,6 +128,12 @@ const VideoPlayer = ({ title, videoId }) => {
   const bufferEndHandler = () => {
     console.log('buffering stoped ,,,,,,play')
     setVideoState({ ...videoState, buffer: false })
+  }
+
+  const handleClickFullscreen = () => {
+    if (screenfull.isEnabled) {
+      screenfull.request(videoPlayerRef.current.wrapper)
+    }
   }
 
   return (
@@ -143,13 +156,16 @@ const VideoPlayer = ({ title, videoId }) => {
         onEnded={() => videoPlayerRef.current.seekTo(0)}
       ></ReactPlayer>
       <AnimatePresence>
-        {!playing && (
+        {!userInteraction && (
           <motion.button
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className='main-play'
-            onClick={() => setVideoState({ ...videoState, playing: true })}
+            onClick={() => {
+              setUserInteraction(true)
+              setVideoState({ ...videoState, playing: true })
+            }}
           >
             <img src={play} alt='play'></img>
           </motion.button>
@@ -173,7 +189,17 @@ const VideoPlayer = ({ title, videoId }) => {
         duration={formatDuration}
         currentTime={formatCurrentTime}
         onMouseSeekDown={onSeekMouseDownHandler}
+        userInteraction={userInteraction}
       ></Control>
+      <div
+        className={`full-screen-btn ${
+          userInteraction ? 'controls-show' : 'controls-hide'
+        }`}
+        ref={fullScreenRef}
+        onClick={handleClickFullscreen}
+      >
+        <img src={full} alt='full screen'></img>
+      </div>
     </div>
   )
 }
