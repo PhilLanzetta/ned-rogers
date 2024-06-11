@@ -61,7 +61,7 @@ button {
   text-transform: uppercase;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .navbar {
     padding: 30px 15px;
   }
@@ -88,6 +88,8 @@ button {
 .mobile-logo-link {
   font-size: 18px;
   text-align: center;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .mobile-options {
@@ -98,6 +100,17 @@ button {
   padding: 15px;
   border-top: 1px solid rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  transition: all 700ms;
+}
+
+.mobile-options-show {
+  opacity: 1;
+  transition: all 700ms;
+}
+
+.mobile-options-hide {
+  opacity: 0;
+  transition: all 700ms;
 }
 
 .mobile-view-options,
@@ -136,9 +149,10 @@ button {
   padding: 45px;
 }
 
+
 @media screen and (max-width: 600px) {
   .tile-page {
-    padding: 30px 15px;
+    padding: 60px 15px;
   }
 }
 
@@ -361,5 +375,6 @@ button {
   .project-media-container {
     width: 100%;
     margin-left: 0;
+    padding-top: 80px;
   }
 }

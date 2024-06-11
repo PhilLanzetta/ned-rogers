@@ -1,5 +1,6 @@
 import React from 'react'
 import useWindowSize from '../utils/useWindowSize'
+import HideOnScroll from '../utils/hideOnScroll'
 import { Link } from 'gatsby'
 
 const Header = ({ view, setView }) => {
@@ -20,7 +21,7 @@ const Header = ({ view, setView }) => {
           >
             Ned Rogers
           </Link>
-          <div className='mobile-options'>
+          <HideOnScroll>
             <div className='mobile-view-options'>
               <button
                 className={
@@ -73,7 +74,7 @@ const Header = ({ view, setView }) => {
                 Info
               </Link>
             </div>
-          </div>
+          </HideOnScroll>
         </div>
       ) : (
         <div className='desktop-link-container'>
