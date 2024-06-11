@@ -10,7 +10,14 @@ const Header = ({ view, setView }) => {
     <div className='navbar'>
       {isMobile ? (
         <div className='mobile-nav'>
-          <Link to='/' className='mobile-logo-link'>
+          <Link
+            to='/'
+            className='mobile-logo-link'
+            onClick={() => {
+              localStorage.setItem('view', 'grid')
+              setView('grid')
+            }}
+          >
             Ned Rogers
           </Link>
           <div className='mobile-options'>
@@ -89,7 +96,14 @@ const Header = ({ view, setView }) => {
               All
             </Link>
           </div>
-          <Link to='/' className='logo-link'>
+          <Link
+            to='/'
+            className='logo-link'
+            onClick={() => {
+              localStorage.setItem('view', 'grid')
+              setView('grid')
+            }}
+          >
             Ned Rogers
           </Link>
           <div className='view-options'>

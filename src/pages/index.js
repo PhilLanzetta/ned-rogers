@@ -37,7 +37,7 @@ const IndexPage = ({ data }) => {
             <div className='project-tile-inner-mobile'>
               {allNodes.map((node, index) => (
                 <ProjectTile
-                  key={node.id + index}
+                  key={node.id.concat(index.toString())}
                   tile={node}
                   mobile
                 ></ProjectTile>
@@ -47,12 +47,18 @@ const IndexPage = ({ data }) => {
             <div className='project-tile-outer'>
               <div className='project-tile-inner'>
                 {leftSideNodes.map((node, index) => (
-                  <ProjectTile key={node.id + index} tile={node}></ProjectTile>
+                  <ProjectTile
+                    key={node.id.concat(index.toString())}
+                    tile={node}
+                  ></ProjectTile>
                 ))}
               </div>
               <div className='project-tile-inner'>
                 {rightSideNodes.map((node, index) => (
-                  <ProjectTile key={node.id + index} tile={node}></ProjectTile>
+                  <ProjectTile
+                    key={node.id.concat(index.toString())}
+                    tile={node}
+                  ></ProjectTile>
                 ))}
               </div>
             </div>
@@ -61,7 +67,7 @@ const IndexPage = ({ data }) => {
           <div className='project-list-view'>
             {allNodes.map((node, index) => (
               <ProjectListing
-                key={node.id + index}
+                key={node.id.concat(index.toString())}
                 listing={node}
               ></ProjectListing>
             ))}
@@ -76,6 +82,7 @@ export const query = graphql`
   query {
     contentfulHomePage {
       tiles {
+        id
         desktopAlignment
         desktopWidth
         mobileAlignment
