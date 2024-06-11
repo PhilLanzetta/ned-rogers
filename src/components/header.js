@@ -2,6 +2,7 @@ import React from 'react'
 import useWindowSize from '../utils/useWindowSize'
 import HideOnScroll from '../utils/hideOnScroll'
 import { Link } from 'gatsby'
+import { Link as ModalLink } from 'gatsby-plugin-modal-routing-3'
 
 const Header = ({ view, setView }) => {
   const { width } = useWindowSize()
@@ -70,9 +71,9 @@ const Header = ({ view, setView }) => {
               </Link>
             </div>
             <div className='mobile-information'>
-              <Link to='/' className='information-link'>
+              <ModalLink to='/about' asModal className='information-link'>
                 Info
-              </Link>
+              </ModalLink>
             </div>
           </HideOnScroll>
         </div>
@@ -132,9 +133,9 @@ const Header = ({ view, setView }) => {
             </button>
           </div>
           <div className='information'>
-            <Link to='/' className='information-link'>
+            <ModalLink to='/about' asModal className='information-link'>
               Information
-            </Link>
+            </ModalLink>
           </div>
         </div>
       )}
