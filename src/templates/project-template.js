@@ -45,7 +45,7 @@ const Project = ({ data }) => {
               }
             }
             return (
-              <div key={item.id} style={styles}>
+              <div key={item.imageMediaId} style={styles}>
                 <GatsbyImage
                   image={item.image.gatsbyImageData}
                   alt={item.image.description}
@@ -55,8 +55,10 @@ const Project = ({ data }) => {
           } else {
             return (
               <VideoPlayer
+                key={item.videoMediaId}
                 title={item.title}
                 videoId={item.videoId}
+                aspectRatio={item.aspectRatio}
               ></VideoPlayer>
             )
           }
@@ -86,6 +88,7 @@ export const query = graphql`
           videoId
           title
           showTitleAsCaption
+          aspectRatio
         }
       }
     }

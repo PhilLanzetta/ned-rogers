@@ -6,7 +6,6 @@ import playPauseSvg from '../images/playPause.svg'
 import forward from '../images/forward.svg'
 import sound from '../images/sound.svg'
 
-
 const Control = forwardRef((props, controlRef) => {
   const {
     onPlayPause,
@@ -24,15 +23,9 @@ const Control = forwardRef((props, controlRef) => {
     duration,
     currentTime,
     onMouseSeekDown,
-    userInteraction,
   } = props
   return (
-    <div
-      className={`video-controls ${
-        userInteraction ? 'controls-show' : 'controls-hide'
-      }`}
-      ref={controlRef}
-    >
+    <div className='video-controls' ref={controlRef}>
       <div className='progress-bar'>
         <Slider
           min={0}
@@ -46,6 +39,13 @@ const Control = forwardRef((props, controlRef) => {
               color: '#fff',
               height: '10px',
               width: '10px',
+              '&:focus, &:hover, &.Mui-active': {
+                boxShadow: 'none',
+                // Reset on touch devices, it doesn't add specificity
+                '@media (hover: none)': {
+                  boxShadow: 'none',
+                },
+              },
             },
             '& .MuiSlider-track': {
               color: '#fff',
@@ -83,6 +83,13 @@ const Control = forwardRef((props, controlRef) => {
                 color: '#fff',
                 height: '10px',
                 width: '10px',
+                '&:focus, &:hover, &.Mui-active': {
+                  boxShadow: 'none',
+                  // Reset on touch devices, it doesn't add specificity
+                  '@media (hover: none)': {
+                    boxShadow: 'none',
+                  },
+                },
               },
               '& .MuiSlider-track': {
                 color: '#fff',

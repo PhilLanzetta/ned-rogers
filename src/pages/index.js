@@ -96,6 +96,12 @@ export const query = graphql`
         project {
           slug
           id
+          media {
+            ... on ContentfulVideo {
+              videoMediaId: id
+              aspectRatio
+            }
+          }
         }
       }
     }

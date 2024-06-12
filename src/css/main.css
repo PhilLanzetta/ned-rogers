@@ -254,7 +254,6 @@ button {
 }
 
 .module-video-player {
-  aspect-ratio: 16 / 9;
   position: relative;
 }
 
@@ -324,7 +323,6 @@ button {
   left: 0;
   right: 0;
   z-index: 100;
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.95));
 }
 
 .controls-container {
@@ -365,9 +363,19 @@ button {
 
 .full-screen-btn {
   position: absolute;
+  z-index: 150;
   top: 10px;
   right: 10px;
-  background: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.video-play-pause-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 90%;
+  width: 100%;
+  z-index: 100;
   cursor: pointer;
 }
 

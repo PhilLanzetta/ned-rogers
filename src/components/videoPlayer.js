@@ -9,7 +9,7 @@ import screenfull from 'screenfull'
 
 let count = 0
 
-const VideoPlayer = ({ title, videoId }) => {
+const VideoPlayer = ({ title, videoId, aspectRatio }) => {
   const videoPlayerRef = useRef(null)
   const controlRef = useRef(null)
   const fullScreenRef = useRef(null)
@@ -23,8 +23,6 @@ const VideoPlayer = ({ title, videoId }) => {
     seeking: false,
     buffer: true,
   })
-
-  const [userInteraction, setUserInteraction] = useState(false)
 
   //Destructuring the properties from the videoState
   const { playing, muted, volume, playbackRate, played, seeking, buffer } =
@@ -137,7 +135,11 @@ const VideoPlayer = ({ title, videoId }) => {
   }
 
   return (
-    <div className='video-module' onMouseMove={mouseMoveHandler}>
+    <div
+      className='video-module'
+      style={{ aspectRatio: aspectRatio }}
+      onMouseMove={mouseMoveHandler}
+    >
       <ReactPlayer
         url={`https://player.vimeo.com/video/${videoId}`}
         ref={videoPlayerRef}
@@ -155,22 +157,6 @@ const VideoPlayer = ({ title, videoId }) => {
         onBufferEnd={bufferEndHandler}
         onEnded={() => videoPlayerRef.current.seekTo(0)}
       ></ReactPlayer>
-      <AnimatePresence>
-        {!userInteraction && (
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className='main-play'
-            onClick={() => {
-              setUserInteraction(true)
-              setVideoState({ ...videoState, playing: true })
-            }}
-          >
-            <img src={play} alt='play'></img>
-          </motion.button>
-        )}
-      </AnimatePresence>
       <Control
         ref={controlRef}
         onPlayPause={playPauseHandler}
@@ -189,17 +175,18 @@ const VideoPlayer = ({ title, videoId }) => {
         duration={formatDuration}
         currentTime={formatCurrentTime}
         onMouseSeekDown={onSeekMouseDownHandler}
-        userInteraction={userInteraction}
       ></Control>
       <div
-        className={`full-screen-btn ${
-          userInteraction ? 'controls-show' : 'controls-hide'
-        }`}
+        className='full-screen-btn'
         ref={fullScreenRef}
         onClick={handleClickFullscreen}
       >
         <img src={full} alt='full screen'></img>
       </div>
+      <button
+        className='video-play-pause-overlay'
+        onClick={playPauseHandler}
+      ></button>
     </div>
   )
 }
