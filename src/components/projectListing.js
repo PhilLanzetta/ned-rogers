@@ -16,43 +16,35 @@ const ProjectListing = ({ listing }) => {
     setActive(false)
   }
   return (
-    <Link
-      to={`/${project.slug}`}
-      asModal
-      onMouseEnter={showTip}
-      onMouseLeave={hideTip}
-    >
-      {title}
-      <AnimatePresence>
-        {active && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className='project-tooltip'
-          >
-            <Link to={`/${project.slug}`} asModal>
-              {featuredVideo ? (
-                <div className='project-listing-link'>
-                  <VideoListing
-                    id={featuredVideo}
-                    slug={project.slug}
-                  ></VideoListing>
-                </div>
-              ) : (
-                <div className='project-listing-link'>
-                  <GatsbyImage
-                    image={featuredImage.gatsbyImageData}
-                    objectFit='contain'
-                    alt={featuredImage.description}
-                    className='tile-image'
-                  ></GatsbyImage>
-                </div>
-              )}
-            </Link>
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <Link to={`/${project.slug}`} asModal>
+      <p
+        onMouseEnter={showTip}
+        onMouseLeave={hideTip}
+        className='project-listing-title'
+      >
+        {title}
+      </p>
+      {active && (
+        <div className='project-tooltip'>
+            {featuredVideo ? (
+              <div className='project-listing-video-link'>
+                <VideoListing
+                  id={featuredVideo}
+                  aspectRatio={project.media[0].aspectRatio}
+                ></VideoListing>
+              </div>
+            ) : (
+              <div className='project-listing-link'>
+                <GatsbyImage
+                  image={featuredImage.gatsbyImageData}
+                  objectFit='contain'
+                  alt={featuredImage.description}
+                  className='tile-image'
+                ></GatsbyImage>
+              </div>
+            )}
+        </div>
+      )}
     </Link>
   )
 }

@@ -286,8 +286,8 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-height: 60vh;
-  max-width: 60vw;
+  height: 60vh;
+  width: 60vw;
   border: none;
 }
 
@@ -297,12 +297,23 @@ button {
   display: flex;
 }
 
+.project-listing-video-link {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+}
+
 .video-project-link {
   position: absolute;
   height: 100%;
   width: 100%;
   top: 0;
   z-index: 100;
+}
+
+.project-listing-title {
+  display: inline;
 }
 
 .project-tile-title {
