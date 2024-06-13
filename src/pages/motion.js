@@ -6,7 +6,9 @@ import ProjectTile from '../components/projectTile'
 import ProjectListing from '../components/projectListing'
 
 const Motion = ({ data }) => {
-  const allNodes = data.contentfulHomePage.tiles.filter(tile => tile.category === 'Motion')
+  const allNodes = data.contentfulHomePage.tiles.filter(
+    (tile) => tile.category === 'Motion'
+  )
   const leftSideNodes = allNodes.filter((node, index) => {
     if (index === 0 || index % 2 === 0) {
       return node
@@ -89,7 +91,17 @@ export const query = graphql`
         }
         featuredVideo
         project {
+          id
           slug
+          media {
+            ... on ContentfulVideo {
+              videoMediaId: id
+              aspectRatio
+            }
+            ... on ContentfulImage {
+              id
+            }
+          }
         }
       }
     }
