@@ -3,6 +3,7 @@ import useWindowSize from '../utils/useWindowSize'
 import HideOnScroll from '../utils/hideOnScroll'
 import { Link } from 'gatsby'
 import { Link as ModalLink } from 'gatsby-plugin-modal-routing-3'
+import Logo from '../images/Ned_Logo.png'
 
 const Header = ({ view, setView }) => {
   const { width } = useWindowSize()
@@ -20,7 +21,7 @@ const Header = ({ view, setView }) => {
               setView('grid')
             }}
           >
-            Ned Rogers
+            <img src={Logo} alt='Ned Rogers'></img>
           </Link>
           <HideOnScroll>
             <div className='mobile-view-options'>
@@ -106,7 +107,7 @@ const Header = ({ view, setView }) => {
               setView('grid')
             }}
           >
-            Ned Rogers
+            <img src={Logo} alt='Ned Rogers'></img>
           </Link>
           <div className='view-options'>
             <button
