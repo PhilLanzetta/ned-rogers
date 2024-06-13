@@ -101,6 +101,9 @@ export const query = graphql`
               videoMediaId: id
               aspectRatio
             }
+            ... on ContentfulImage {
+              id
+            }
           }
         }
       }
