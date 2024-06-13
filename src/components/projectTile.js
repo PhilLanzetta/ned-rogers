@@ -55,7 +55,7 @@ const ProjectTile = ({ tile, mobile }) => {
         className={isOnScreen ? 'project-tile-show' : 'project-tile-hide'}
       >
         {featuredVideo ? (
-          <VideoTile id={featuredVideo} slug={project.slug} aspectRatio={project.media[0].aspectRatio}></VideoTile>
+          <VideoTile id={featuredVideo} slug={project.slug} aspectRatio={project.media[0]?.aspectRatio}></VideoTile>
         ) : (
           <GatsbyImage
             image={featuredImage.gatsbyImageData}
