@@ -59,7 +59,7 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
 
   //console.log("========", (controlRef.current.style.visibility = "false"));
   const progressHandler = (state) => {
-    if (count > 15) {
+    if (count > 5) {
       controlRef.current.style.visibility = 'hidden'
       fullScreenRef.current.style.visibility = 'hidden' // toggling player control container
     } else {
