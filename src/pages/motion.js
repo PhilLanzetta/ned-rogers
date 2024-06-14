@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import useWindowSize from '../utils/useWindowSize'
 import ProjectTile from '../components/projectTile'
 import ProjectListing from '../components/projectListing'
+import { Fade } from 'react-awesome-reveal'
 
 const Motion = ({ data }) => {
   const allNodes = data.contentfulHomePage.tiles.filter(
@@ -60,14 +61,14 @@ const Motion = ({ data }) => {
             </div>
           )
         ) : (
-          <div className='project-list-view'>
+          <Fade cascade damping={0.05} className='project-list-view'>
             {allNodes.map((node, index) => (
               <ProjectListing
                 key={node.id + index}
                 listing={node}
               ></ProjectListing>
             ))}
-          </div>
+          </Fade>
         )}
       </div>
     </Layout>

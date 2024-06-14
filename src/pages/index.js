@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import useWindowSize from '../utils/useWindowSize'
 import ProjectTile from '../components/projectTile'
 import ProjectListing from '../components/projectListing'
+import { Fade } from 'react-awesome-reveal'
 
 const IndexPage = ({ data }) => {
   const allNodes = data.contentfulHomePage.tiles
@@ -64,14 +65,14 @@ const IndexPage = ({ data }) => {
             </div>
           )
         ) : (
-          <div className='project-list-view'>
+          <Fade cascade damping={0.05} className='project-list-view'>
             {allNodes.map((node, index) => (
               <ProjectListing
                 key={node.id.concat(index.toString())}
                 listing={node}
               ></ProjectListing>
             ))}
-          </div>
+          </Fade>
         )}
       </div>
     </Layout>

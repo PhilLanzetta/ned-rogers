@@ -4,6 +4,7 @@ import ConditionalLayout from '../components/ConditionalLayout'
 import useWindowSize from '../utils/useWindowSize'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import VideoPlayer from '../components/videoPlayer'
+import { Fade } from 'react-awesome-reveal'
 
 const Project = ({ data }) => {
   const { title, media, id } = data.contentfulProject
@@ -46,20 +47,24 @@ const Project = ({ data }) => {
             }
             return (
               <div key={item.imageMediaId} style={styles}>
-                <GatsbyImage
-                  image={item.image.gatsbyImageData}
-                  alt={item.image.description}
-                ></GatsbyImage>
+                <Fade>
+                  <GatsbyImage
+                    image={item.image.gatsbyImageData}
+                    alt={item.image.description}
+                  ></GatsbyImage>
+                </Fade>
               </div>
             )
           } else {
             return (
-              <VideoPlayer
-                key={item.videoMediaId}
-                title={item.title}
-                videoId={item.videoId}
-                aspectRatio={item.aspectRatio}
-              ></VideoPlayer>
+              <Fade>
+                <VideoPlayer
+                  key={item.videoMediaId}
+                  title={item.title}
+                  videoId={item.videoId}
+                  aspectRatio={item.aspectRatio}
+                ></VideoPlayer>
+              </Fade>
             )
           }
         })}

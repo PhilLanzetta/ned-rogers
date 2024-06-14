@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'gatsby-plugin-modal-routing-3'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { motion, AnimatePresence } from 'framer-motion'
 import VideoListing from './videoListing'
+import { Fade } from 'react-awesome-reveal'
 
 const ProjectListing = ({ listing }) => {
   const [active, setActive] = useState(false)
