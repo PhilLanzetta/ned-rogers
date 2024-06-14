@@ -29,7 +29,7 @@ const Project = ({ data }) => {
               marginValue = '0'
             } else {
               alignment = 'center'
-              clearValue = 'none'
+              clearValue = 'both'
               marginValue = '0 auto'
             }
             let styles

@@ -5,6 +5,7 @@ import play from '../images/play.svg'
 import Control from './control'
 import { formatTime } from '../utils/formatTIme'
 import full from '../images/fullScreen.svg'
+import small from '../images/smallScreen.svg'
 import screenfull from 'screenfull'
 
 let count = 0
@@ -23,6 +24,8 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
     seeking: false,
     buffer: true,
   })
+
+  const [fullScreenState, setFullScreenState] = useState(false)
 
   //Destructuring the properties from the videoState
   const { playing, muted, volume, playbackRate, played, seeking, buffer } =
@@ -129,13 +132,18 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
   }
 
   const handleClickFullscreen = () => {
-    if (screenfull.isEnabled) {
-      screenfull.request(videoPlayerRef.current.wrapper)
+    if (!fullScreenState && screenfull.isEnabled) {
+      screenfull.request(document.getElementById(videoId))
+      setFullScreenState(true)
+    } else {
+      document.exitFullscreen()
+      setFullScreenState(false)
     }
   }
 
   return (
     <div
+      id={videoId}
       className='video-module'
       style={{ aspectRatio: aspectRatio }}
       onMouseMove={mouseMoveHandler}
@@ -181,7 +189,7 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
         ref={fullScreenRef}
         onClick={handleClickFullscreen}
       >
-        <img src={full} alt='full screen'></img>
+        <img src={fullScreenState ? small : full} alt='full screen'></img>
       </div>
       <button
         className='video-play-pause-overlay'

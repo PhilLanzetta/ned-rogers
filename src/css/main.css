@@ -19,7 +19,7 @@
 }
 
 :root {
-  --font-primary: 'Test Sans', serif;
+  --font-primary: 'Test Sans', sans-serif;
   --primary-weight: 400;
 }
 
@@ -31,7 +31,7 @@ html {
   overflow-x: hidden;
   width: 100vw;
   height: 100vh;
-  background: #F2F2F2;
+  background: #f2f2f2;
 }
 
 a {
@@ -157,7 +157,6 @@ button {
   padding: 45px;
 }
 
-
 @media screen and (max-width: 600px) {
   .tile-page {
     padding: 60px 15px;
@@ -227,6 +226,7 @@ button {
   right: 40px;
   top: 40px;
   z-index: 100;
+  font-size: 18px;
 }
 
 .page-title {
@@ -250,7 +250,7 @@ button {
 .project-media-container {
   width: 75%;
   margin-left: 12.5%;
-  padding-top: 20px;
+  padding-top: 60px;
 }
 
 .tile-image {
@@ -409,7 +409,6 @@ button {
 .about-page {
   display: flex;
   gap: 10px;
-
 }
 
 .about-bio {
@@ -424,20 +423,19 @@ button {
 
 @media screen and (max-width: 900px) {
   .about-page {
-  display: flex;
-  flex-direction: column;
-  padding-top: 60px;
-  gap: 30px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+    gap: 30px;
+  }
 
-}
+  .about-bio {
+    width: 100%;
+    margin-right: 0;
+  }
 
-.about-bio {
-  width: 100%;
-  margin-right: 0;
-}
-
-.about-contact {
-  width: 100%;
-  text-transform: uppercase;
-}
+  .about-contact {
+    width: 100%;
+    text-transform: uppercase;
+  }
 }

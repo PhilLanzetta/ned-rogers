@@ -9,14 +9,14 @@ const ConditionalLayout = ({ children, id }) => (
       modal ? (
         <>
           <Link to={closeTo} className='modal-close'>
-            X
+            &times;
           </Link>
           {children}
         </>
       ) : (
         <>
           <Link className='modal-close' to={`/#${id}`}>
-            X
+            &times;
           </Link>
           <div className='page-container'>{children}</div>
         </>

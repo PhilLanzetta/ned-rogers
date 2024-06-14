@@ -50,7 +50,7 @@ module.exports = {
             },
           },
           closeTimeoutMS: 1000,
-          preventScroll: false,
+          preventScroll: true,
           htmlOpenClassName: 'ReactModal__Html--open',
         },
       },
@@ -63,7 +63,18 @@ module.exports = {
       },
     },
     'gatsby-transformer-remark',
-    'gatsby-plugin-sharp',
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `blurred`,
+          quality: 50,
+          breakpoints: [750, 1080, 1366, 1920],
+          backgroundColor: `transparent`,
+        },
+      },
+    },
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-filesystem',
