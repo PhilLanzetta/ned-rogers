@@ -107,15 +107,19 @@ button {
 }
 
 .mobile-logo-link {
-  font-size: 18px;
-  text-align: center;
   width: 100%;
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-logo-link img {
+  width: clamp(80px, 50%, 150px);
 }
 
 .mobile-options {
   display: flex;
-  margin-top: 30px;
+  margin-top: 15px;
   width: calc(100% + 30px);
   margin-left: -15px;
   padding: 15px;
