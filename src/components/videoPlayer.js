@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
 import ReactPlayer from 'react-player'
-import { AnimatePresence, motion } from 'framer-motion'
-import play from '../images/play.svg'
 import Control from './control'
 import { formatTime } from '../utils/formatTIme'
 import full from '../images/fullScreen.svg'
@@ -158,7 +156,6 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
         controls={false}
         playing={playing}
         playsinline
-        allowFullscreen
         volume={volume}
         muted={muted}
         onProgress={progressHandler}
