@@ -16,36 +16,38 @@ const ProjectListing = ({ listing }) => {
     setActive(false)
   }
   return (
-    <Link to={`/${project.slug}`} asModal>
-      <p
-        onMouseEnter={showTip}
-        onMouseLeave={hideTip}
-        className='project-listing-title'
-      >
-        {title}
-      </p>
+    <>
+      <Link to={`/${project.slug}`} asModal className="project-listing-link">
+        <p
+          onMouseEnter={showTip}
+          onMouseLeave={hideTip}
+          className='project-listing-title'
+        >
+          {title}
+        </p>
+      </Link>
       {active && (
         <div className='project-tooltip'>
-            {featuredVideo ? (
-              <div className='project-listing-video-link'>
-                <VideoListing
-                  id={featuredVideo}
-                  aspectRatio={project.media[0].aspectRatio}
-                ></VideoListing>
-              </div>
-            ) : (
-              <div className='project-listing-link'>
-                <GatsbyImage
-                  image={featuredImage.gatsbyImageData}
-                  objectFit='contain'
-                  alt={featuredImage.description}
-                  className='tile-image'
-                ></GatsbyImage>
-              </div>
-            )}
+          {featuredVideo ? (
+            <div className='project-listing-video-link'>
+              <VideoListing
+                id={featuredVideo}
+                aspectRatio={project.media[0].aspectRatio}
+              ></VideoListing>
+            </div>
+          ) : (
+            <div className='project-listing-link'>
+              <GatsbyImage
+                image={featuredImage.gatsbyImageData}
+                objectFit='contain'
+                alt={featuredImage.description}
+                className='tile-image'
+              ></GatsbyImage>
+            </div>
+          )}
         </div>
       )}
-    </Link>
+    </>
   )
 }
 

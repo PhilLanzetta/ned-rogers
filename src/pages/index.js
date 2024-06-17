@@ -65,14 +65,16 @@ const IndexPage = ({ data }) => {
             </div>
           )
         ) : (
-          <Fade cascade damping={0.05} className='project-list-view'>
-            {allNodes.map((node, index) => (
-              <ProjectListing
-                key={node.id.concat(index.toString())}
-                listing={node}
-              ></ProjectListing>
-            ))}
-          </Fade>
+          <div className='project-list-view'>
+            <Fade cascade damping={0.05}>
+              {allNodes.map((node, index) => (
+                <ProjectListing
+                  key={node.id.concat(index.toString())}
+                  listing={node}
+                ></ProjectListing>
+              ))}
+            </Fade>
+          </div>
         )}
       </div>
     </Layout>
