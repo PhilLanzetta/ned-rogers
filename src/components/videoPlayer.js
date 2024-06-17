@@ -158,6 +158,7 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
         controls={false}
         playing={playing}
         playsinline
+        allowFullscreen
         volume={volume}
         muted={muted}
         onProgress={progressHandler}

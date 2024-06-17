@@ -459,6 +459,14 @@ button {
     margin-left: 0;
     padding-top: 80px;
   }
+
+  .progress-bar {
+    height: 25px;
+  }
+
+  .video-controls {
+    padding: 5px 10px;
+  }
 }
 
 .about-page {
