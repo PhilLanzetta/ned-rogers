@@ -323,6 +323,11 @@ button {
   position: relative;
 }
 
+.module-video-player iframe {
+  height: 100%;
+  width: 100%;
+}
+
 .main-play {
   position: absolute;
   top: 50%;
