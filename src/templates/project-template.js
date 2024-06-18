@@ -57,14 +57,15 @@ const Project = ({ data }) => {
             )
           } else {
             return (
-              <Fade>
-                <VideoPlayer
-                  key={item.videoMediaId}
-                  title={item.title}
-                  videoId={item.videoId}
-                  aspectRatio={item.aspectRatio}
-                ></VideoPlayer>
-              </Fade>
+              <div style={{ padding: '20px' }} key={item.videoMediaId}>
+                <Fade>
+                  <VideoPlayer
+                    title={item.title}
+                    videoId={item.videoId}
+                    aspectRatio={item.aspectRatio}
+                  ></VideoPlayer>
+                </Fade>
+              </div>
             )
           }
         })}

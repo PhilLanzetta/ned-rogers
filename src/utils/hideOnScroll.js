@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import useWindowSize from './useWindowSize'
 
 const HideOnScroll = ({ children }) => {
   const [prevScrollPos, setPrevScrollPos] = useState(0)
   const [visible, setVisible] = useState(true)
+  const { width } = useWindowSize()
+  const isMobile = width < 601
 
   const handleScroll = () => {
     const currentScrollPos = window.scrollY
@@ -12,8 +15,13 @@ const HideOnScroll = ({ children }) => {
         setPrevScrollPos(currentScrollPos)
       }
     } else {
-      setVisible(false)
-      setPrevScrollPos(currentScrollPos)
+      if (isMobile) {
+        setVisible(currentScrollPos < 50)
+        setPrevScrollPos(currentScrollPos)
+      } else {
+        setVisible(false)
+        setPrevScrollPos(currentScrollPos)
+      }
     }
   }
 

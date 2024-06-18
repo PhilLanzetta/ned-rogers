@@ -3,7 +3,7 @@ import useWindowSize from '../utils/useWindowSize'
 import HideOnScroll from '../utils/hideOnScroll'
 import { Link } from 'gatsby'
 import { Link as ModalLink } from 'gatsby-plugin-modal-routing-3'
-import Logo from '../images/Ned_Logo.png'
+import Logo from '../images/Ned_Logo.svg'
 
 const Header = ({ view, setView, setChangeView }) => {
   const { width } = useWindowSize()
