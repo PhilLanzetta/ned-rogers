@@ -106,6 +106,7 @@ button {
   justify-content: center;
   position: fixed;
   top: 30px;
+  left: 0;
   z-index: 100;
 }
 
@@ -274,6 +275,20 @@ button {
   left: 40px;
   top: 40px;
   z-index: 100;
+}
+
+@media screen and (max-width: 600px) {
+  .page-title {
+    left: calc(20px + 2vw);
+  }
+
+  .modal-close {
+    right: calc(20px + 2vw);
+  }
+
+  .modal-close:hover {
+    transform: none;
+  }
 }
 
 .page-container {
@@ -467,7 +482,7 @@ button {
   .project-media-container {
     width: 100%;
     margin-left: 0;
-    padding-top: 80px;
+    padding-top: 70px;
   }
 
   .progress-bar {
