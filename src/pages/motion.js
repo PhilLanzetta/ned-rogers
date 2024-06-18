@@ -23,6 +23,7 @@ const Motion = ({ data }) => {
   const { width } = useWindowSize()
   const isMobile = width < 900
   const [view, setView] = useState('grid')
+  const [changeView, setChangeView] = useState(false)
 
   useEffect(() => {
     if (localStorage.getItem('view')) {
@@ -33,7 +34,7 @@ const Motion = ({ data }) => {
   }, [])
 
   return (
-    <Layout view={view} setView={setView}>
+    <Layout view={view} setView={setView} setChangeView={setChangeView}>
       <div className='tile-page'>
         {view === 'grid' ? (
           isMobile ? (
@@ -60,15 +61,26 @@ const Motion = ({ data }) => {
               </div>
             </div>
           )
+        ) : changeView ? (
+          <div className='project-list-view'>
+            <Fade cascade damping={0.05}>
+              {allNodes.map((node, index) => (
+                <ProjectListing
+                  key={node.id + index}
+                  listing={node}
+                ></ProjectListing>
+              ))}
+            </Fade>
+          </div>
         ) : (
-          <Fade cascade damping={0.05} className='project-list-view'>
+          <div className='project-list-view'>
             {allNodes.map((node, index) => (
               <ProjectListing
                 key={node.id + index}
                 listing={node}
               ></ProjectListing>
             ))}
-          </Fade>
+          </div>
         )}
       </div>
     </Layout>

@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { Link } from 'gatsby-plugin-modal-routing-3'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import VideoListing from './videoListing'
-import { Fade } from 'react-awesome-reveal'
+import useWindowSize from '../utils/useWindowSize'
 
 const ProjectListing = ({ listing }) => {
   const [active, setActive] = useState(false)
   const { title, featuredImage, featuredVideo, project } = listing
+  const { width } = useWindowSize()
+  const isMobile = width < 601
 
   const showTip = () => {
     setActive(true)
@@ -17,10 +19,10 @@ const ProjectListing = ({ listing }) => {
   }
   return (
     <>
-      <Link to={`/${project.slug}`} asModal className="project-listing-link">
+      <Link to={`/${project.slug}`} asModal className='project-listing-link'>
         <p
-          onMouseEnter={showTip}
-          onMouseLeave={hideTip}
+          onMouseEnter={isMobile ? null : showTip}
+          onMouseLeave={isMobile ? null : hideTip}
           className='project-listing-title'
         >
           {title}

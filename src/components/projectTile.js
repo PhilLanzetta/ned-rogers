@@ -63,7 +63,7 @@ const ProjectTile = ({ tile, mobile }) => {
             className='tile-image'
           ></GatsbyImage>
         )}
-        <div className='project-tile-title hover-underline'>{title}</div>
+        <div className='project-tile-title'>{title}</div>
       </div>
     </Link>
   )

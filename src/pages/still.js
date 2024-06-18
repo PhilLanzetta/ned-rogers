@@ -7,7 +7,9 @@ import ProjectListing from '../components/projectListing'
 import { Fade } from 'react-awesome-reveal'
 
 const Still = ({ data }) => {
-  const allNodes = data.contentfulHomePage.tiles.filter(tile => tile.category === 'Still')
+  const allNodes = data.contentfulHomePage.tiles.filter(
+    (tile) => tile.category === 'Still'
+  )
   const leftSideNodes = allNodes.filter((node, index) => {
     if (index === 0 || index % 2 === 0) {
       return node
@@ -21,6 +23,7 @@ const Still = ({ data }) => {
   const { width } = useWindowSize()
   const isMobile = width < 900
   const [view, setView] = useState('grid')
+  const [changeView, setChangeView] = useState(false)
 
   useEffect(() => {
     if (localStorage.getItem('view')) {
@@ -31,7 +34,7 @@ const Still = ({ data }) => {
   }, [])
 
   return (
-    <Layout view={view} setView={setView}>
+    <Layout view={view} setView={setView} setChangeView={setChangeView}>
       <div className='tile-page'>
         {view === 'grid' ? (
           isMobile ? (
@@ -58,15 +61,26 @@ const Still = ({ data }) => {
               </div>
             </div>
           )
+        ) : changeView ? (
+          <div className='project-list-view'>
+            <Fade cascade damping={0.05}>
+              {allNodes.map((node, index) => (
+                <ProjectListing
+                  key={node.id + index}
+                  listing={node}
+                ></ProjectListing>
+              ))}
+            </Fade>
+          </div>
         ) : (
-          <Fade cascade damping={0.05} className='project-list-view'>
+          <div className='project-list-view'>
             {allNodes.map((node, index) => (
               <ProjectListing
                 key={node.id + index}
                 listing={node}
               ></ProjectListing>
             ))}
-          </Fade>
+          </div>
         )}
       </div>
     </Layout>

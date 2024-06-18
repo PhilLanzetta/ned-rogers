@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 import { Link as ModalLink } from 'gatsby-plugin-modal-routing-3'
 import Logo from '../images/Ned_Logo.png'
 
-const Header = ({ view, setView }) => {
+const Header = ({ view, setView, setChangeView }) => {
   const { width } = useWindowSize()
   const isMobile = width < 900
 
@@ -24,30 +24,6 @@ const Header = ({ view, setView }) => {
             <img src={Logo} alt='Ned Rogers'></img>
           </Link>
           <HideOnScroll>
-            <div className='mobile-view-options'>
-              <button
-                className={
-                  view === 'grid' ? 'view-button active-link' : 'view-button'
-                }
-                onClick={() => {
-                  localStorage.setItem('view', 'grid')
-                  setView('grid')
-                }}
-              >
-                Grid
-              </button>
-              <button
-                className={
-                  view === 'list' ? 'view-button active-link' : 'view-button'
-                }
-                onClick={() => {
-                  localStorage.setItem('view', 'list')
-                  setView('list')
-                }}
-              >
-                List
-              </button>
-            </div>
             <div className='mobile-category-links'>
               <Link
                 to='/motion'
@@ -70,6 +46,31 @@ const Header = ({ view, setView }) => {
               >
                 All
               </Link>
+            </div>
+            <div className='mobile-view-options'>
+              <button
+                className={
+                  view === 'grid' ? 'view-button active-link' : 'view-button'
+                }
+                onClick={() => {
+                  localStorage.setItem('view', 'grid')
+                  setView('grid')
+                }}
+              >
+                Grid
+              </button>
+              <button
+                className={
+                  view === 'list' ? 'view-button active-link' : 'view-button'
+                }
+                onClick={() => {
+                  localStorage.setItem('view', 'list')
+                  setView('list')
+                  setChangeView(true)
+                }}
+              >
+                List
+              </button>
             </div>
             <div className='mobile-information'>
               <ModalLink to='/about' asModal className='information-link'>
@@ -128,6 +129,7 @@ const Header = ({ view, setView }) => {
               onClick={() => {
                 localStorage.setItem('view', 'list')
                 setView('list')
+                setChangeView(true)
               }}
             >
               List

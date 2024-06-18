@@ -21,6 +21,7 @@ const IndexPage = ({ data }) => {
   const { width } = useWindowSize()
   const isMobile = width < 900
   const [view, setView] = useState('grid')
+  const [changeView, setChangeView] = useState(false)
 
   useEffect(() => {
     if (localStorage.getItem('view')) {
@@ -31,7 +32,7 @@ const IndexPage = ({ data }) => {
   }, [])
 
   return (
-    <Layout view={view} setView={setView}>
+    <Layout setChangeView={setChangeView} view={view} setView={setView}>
       <div className='tile-page'>
         {view === 'grid' ? (
           isMobile ? (
@@ -64,16 +65,25 @@ const IndexPage = ({ data }) => {
               </div>
             </div>
           )
-        ) : (
+        ) : changeView ? (
           <div className='project-list-view'>
             <Fade cascade damping={0.05}>
               {allNodes.map((node, index) => (
                 <ProjectListing
-                  key={node.id.concat(index.toString())}
+                  key={node.id + index}
                   listing={node}
                 ></ProjectListing>
               ))}
             </Fade>
+          </div>
+        ) : (
+          <div className='project-list-view'>
+            {allNodes.map((node, index) => (
+              <ProjectListing
+                key={node.id + index}
+                listing={node}
+              ></ProjectListing>
+            ))}
           </div>
         )}
       </div>

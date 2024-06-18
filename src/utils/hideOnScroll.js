@@ -6,8 +6,15 @@ const HideOnScroll = ({ children }) => {
 
   const handleScroll = () => {
     const currentScrollPos = window.scrollY
-    setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 100)
-    setPrevScrollPos(currentScrollPos)
+    if (prevScrollPos > currentScrollPos) {
+      if (prevScrollPos - currentScrollPos > 200 || currentScrollPos < 100) {
+        setVisible(true)
+        setPrevScrollPos(currentScrollPos)
+      }
+    } else {
+      setVisible(false)
+      setPrevScrollPos(currentScrollPos)
+    }
   }
 
   useEffect(() => {
@@ -16,9 +23,20 @@ const HideOnScroll = ({ children }) => {
   }, [prevScrollPos, visible])
 
   return (
-    <div className={`mobile-options ${visible ? 'mobile-options-show' : 'mobile-options-hide'}`}>
-      {children}
-    </div>
+    <>
+      <div
+        className={`mobile-options ${
+          visible ? 'mobile-options-show' : 'mobile-options-hide'
+        }`}
+      >
+        {children}
+      </div>
+      <div
+        className={`mobile-nav-background ${
+          visible ? 'mobile-options-show' : 'mobile-options-hide'
+        }`}
+      ></div>
+    </>
   )
 }
 
