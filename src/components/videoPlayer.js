@@ -161,7 +161,7 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
         height={'100%'}
         className='module-video-player'
         progressInterval={1}
-        controls={isMobile && fullScreenState}
+        controls={isMobile}
         playing={playing}
         playsinline
         volume={volume}
@@ -171,32 +171,36 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
         onBufferEnd={bufferEndHandler}
         onEnded={() => videoPlayerRef.current.seekTo(0)}
       ></ReactPlayer>
-      <Control
-        ref={controlRef}
-        onPlayPause={playPauseHandler}
-        playing={playing}
-        onRewind={rewindHandler}
-        onForward={handleFastFoward}
-        played={played}
-        onSeek={seekHandler}
-        onSeekMouseUp={seekMouseUpHandler}
-        volume={volume}
-        onVolumeChangeHandler={volumeChangeHandler}
-        onVolumeSeekUp={volumeSeekUpHandler}
-        mute={muted}
-        onMute={muteHandler}
-        playRate={playbackRate}
-        duration={formatDuration}
-        currentTime={formatCurrentTime}
-        onMouseSeekDown={onSeekMouseDownHandler}
-      ></Control>
-      <div
-        className='full-screen-btn'
-        ref={fullScreenRef}
-        onClick={handleClickFullscreen}
-      >
-        <img src={fullScreenState ? small : full} alt='full screen'></img>
-      </div>
+      {!isMobile && (
+        <Control
+          ref={controlRef}
+          onPlayPause={playPauseHandler}
+          playing={playing}
+          onRewind={rewindHandler}
+          onForward={handleFastFoward}
+          played={played}
+          onSeek={seekHandler}
+          onSeekMouseUp={seekMouseUpHandler}
+          volume={volume}
+          onVolumeChangeHandler={volumeChangeHandler}
+          onVolumeSeekUp={volumeSeekUpHandler}
+          mute={muted}
+          onMute={muteHandler}
+          playRate={playbackRate}
+          duration={formatDuration}
+          currentTime={formatCurrentTime}
+          onMouseSeekDown={onSeekMouseDownHandler}
+        ></Control>
+      )}
+      {!isMobile && (
+        <div
+          className='full-screen-btn'
+          ref={fullScreenRef}
+          onClick={handleClickFullscreen}
+        >
+          <img src={fullScreenState ? small : full} alt='full screen'></img>
+        </div>
+      )}
       <button
         className='video-play-pause-overlay'
         onClick={playPauseHandler}
