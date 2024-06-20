@@ -153,6 +153,7 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
       className='video-module'
       style={{ aspectRatio: aspectRatio }}
       onMouseMove={mouseMoveHandler}
+      key={isMobile}
     >
       <ReactPlayer
         url={`https://player.vimeo.com/video/${videoId}`}
