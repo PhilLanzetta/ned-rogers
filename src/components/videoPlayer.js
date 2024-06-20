@@ -5,6 +5,7 @@ import { formatTime } from '../utils/formatTIme'
 import full from '../images/fullScreen.svg'
 import small from '../images/smallScreen.svg'
 import screenfull from 'screenfull'
+import useWindowSize from '../utils/useWindowSize'
 
 let count = 0
 
@@ -24,6 +25,9 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
   })
 
   const [fullScreenState, setFullScreenState] = useState(false)
+
+  const { width } = useWindowSize()
+  const isMobile = width < 601
 
   //Destructuring the properties from the videoState
   const { playing, muted, volume, playbackRate, played, seeking, buffer } =
@@ -130,8 +134,12 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
   }
 
   const handleClickFullscreen = () => {
-    if (!fullScreenState && screenfull.isEnabled) {
+    if (!fullScreenState && !isMobile && screenfull.isEnabled) {
       screenfull.request(document.getElementById(videoId))
+      setFullScreenState(true)
+    } else if (isMobile && !fullScreenState && screenfull.isEnabled) {
+      const videoDiv = document.getElementById(videoId)
+      screenfull.request(videoDiv.getElementsByTagName('iframe')[0])
       setFullScreenState(true)
     } else {
       document.exitFullscreen()
@@ -153,7 +161,7 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
         height={'100%'}
         className='module-video-player'
         progressInterval={1}
-        controls={false}
+        controls={isMobile && fullScreenState}
         playing={playing}
         playsinline
         volume={volume}
