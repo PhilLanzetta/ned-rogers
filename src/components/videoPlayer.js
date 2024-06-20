@@ -201,10 +201,12 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
           <img src={fullScreenState ? small : full} alt='full screen'></img>
         </div>
       )}
-      <button
-        className='video-play-pause-overlay'
-        onClick={playPauseHandler}
-      ></button>
+      {!isMobile && (
+        <button
+          className='video-play-pause-overlay'
+          onClick={playPauseHandler}
+        ></button>
+      )}
     </div>
   )
 }
