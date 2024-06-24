@@ -59,7 +59,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: 'src/images/PACIFIC_NEDROGERS_FAVICON.svg',
+        icon: 'src/images/NED_FAVICON.svg',
       },
     },
     'gatsby-transformer-remark',

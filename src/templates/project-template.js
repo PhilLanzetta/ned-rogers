@@ -102,3 +102,7 @@ export const query = graphql`
 `
 
 export default Project
+
+export const Head = ({ data }) => (
+  <title>Ned Rogers | {data.contentfulProject.title}</title>
+)

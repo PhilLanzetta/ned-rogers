@@ -41,3 +41,5 @@ export const query = graphql`
 `
 
 export default About
+
+export const Head = () => <title>Ned Rogers</title>

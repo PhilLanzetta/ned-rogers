@@ -113,4 +113,4 @@ export const query = graphql`
 
 export default Still
 
-export const Head = () => <title>Still</title>
+export const Head = () => <title>Ned Rogers | Still</title>

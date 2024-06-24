@@ -126,4 +126,4 @@ export const query = graphql`
 
 export default IndexPage
 
-export const Head = () => <title>Home Page</title>
+export const Head = () => <title>Ned Rogers</title>
