@@ -26,8 +26,8 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
 
   const [fullScreenState, setFullScreenState] = useState(false)
 
-  const { width } = useWindowSize()
-  const isMobile = width < 601
+  const { width, height } = useWindowSize()
+  const isMobile = height > width ? width < 769 : width < 900
 
   //Destructuring the properties from the videoState
   const { playing, muted, volume, playbackRate, played, seeking, buffer } =
@@ -152,7 +152,7 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
       id={videoId}
       className='video-module'
       style={{ aspectRatio: aspectRatio }}
-      onMouseMove={mouseMoveHandler}
+      onMouseMove={isMobile ? null : mouseMoveHandler}
       key={isMobile}
     >
       <ReactPlayer
