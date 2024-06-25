@@ -46,7 +46,7 @@ module.exports = {
               WebkitOverflowScrolling: 'touch',
               borderRadius: '0px',
               outline: 'none',
-              padding: 'clamp(0px, 2vw, 20px)',
+              padding: '0px',
             },
           },
           closeTimeoutMS: 1000,

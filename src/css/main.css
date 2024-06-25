@@ -20,7 +20,7 @@
 
 :root {
   --font-primary: 'Test Sans', sans-serif;
-  --primary-weight: 400;
+  --primary-weight: 100;
 }
 
 html {
@@ -112,25 +112,25 @@ h2 {
   align-items: center;
   justify-content: center;
   position: fixed;
-  top: 30px;
+  top: 24px;
   left: 0;
   z-index: 100;
 }
 
 .mobile-logo-link img {
-  width: 150px;
+  width: 130px;
 }
 
 .mobile-options {
   position: relative;
   display: flex;
-  margin-top: 52px;
+  justify-content: space-between;
+  margin-top: 24px;
   width: calc(100% + 30px);
   margin-left: -15px;
   padding: 15px;
   z-index: 10;
-  border-top: 1px solid rgba(0, 0, 0, 0.5);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 10px -6px #fff;
   transition: all 700ms;
 }
 
@@ -157,7 +157,6 @@ h2 {
 .mobile-view-options,
 .mobile-category-links,
 .mobile-information {
-  width: 33.3%;
   display: flex;
   gap: 10px;
 }
@@ -198,7 +197,7 @@ h2 {
 
 @media screen and (max-width: 600px) {
   .tile-page {
-    padding: 80px 15px;
+    padding: 50px 15px 80px 15px;
   }
 }
 
@@ -288,7 +287,7 @@ h2 {
 
 @media screen and (max-width: 600px) {
   .modal-close {
-    right: calc(20px + 2vw);
+    right: 15px;
   }
 
   .modal-close:hover {
@@ -356,6 +355,7 @@ h2 {
 .project-tooltip {
   display: flex;
   position: fixed;
+  z-index: 1;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -368,6 +368,8 @@ h2 {
   max-height: 100%;
   max-width: 100%;
   display: flex;
+  position: relative;
+  z-index: 10;
 }
 
 .project-listing-video-link {
