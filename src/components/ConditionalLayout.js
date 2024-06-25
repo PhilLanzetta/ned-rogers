@@ -1,7 +1,6 @@
 import React from 'react'
-import Layout from './layout'
 import { Link, ModalRoutingContext } from 'gatsby-plugin-modal-routing-3'
-import { navigate } from 'gatsby'
+import x from '../images/_X_SVG.svg'
 
 const ConditionalLayout = ({ children, id }) => (
   <ModalRoutingContext.Consumer>
@@ -9,14 +8,14 @@ const ConditionalLayout = ({ children, id }) => (
       modal ? (
         <>
           <Link to={closeTo} className='modal-close'>
-            &times;
+            <img src={x} alt='close' className='close-icon'></img>
           </Link>
           {children}
         </>
       ) : (
         <>
           <Link className='modal-close' to={`/#${id}`}>
-            &times;
+            <img src={x} alt='close' className='close-icon'></img>
           </Link>
           <div className='page-container'>{children}</div>
         </>

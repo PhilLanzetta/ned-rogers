@@ -54,6 +54,13 @@ button {
   letter-spacing: 1px;
 }
 
+h2 {
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-family: var(--font-primary);
+  font-weight: var(--primary-weight);
+}
+
 .navbar {
   width: 100%;
   position: fixed;
@@ -258,30 +265,28 @@ button {
   right: 40px;
   top: 40px;
   z-index: 100;
-  font-size: 22px;
-  font-weight: 100;
-  transform-origin: center 16px;
   transition: all 300ms;
+}
+
+.close-icon {
+  height: 10px;
+  width: 10px;
 }
 
 .modal-close:hover {
   transform: rotate(90deg);
-  transform-origin: center 16px;
   transition: all 300ms;
 }
 
 .page-title {
   position: fixed;
-  left: 40px;
+  left: 50%;
+  transform: translateX(-50%);
   top: 40px;
   z-index: 100;
 }
 
 @media screen and (max-width: 600px) {
-  .page-title {
-    left: calc(20px + 2vw);
-  }
-
   .modal-close {
     right: calc(20px + 2vw);
   }
