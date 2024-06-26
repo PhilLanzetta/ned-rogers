@@ -140,7 +140,7 @@ h2 {
   left: 0;
   height: calc(100% + 200px);
   width: 100%;
-  background: #f2f2f2;
+  background: #ffffff;
   z-index: 1;
 }
 
@@ -197,7 +197,7 @@ h2 {
 
 @media screen and (max-width: 600px) {
   .tile-page {
-    padding: 50px 15px 80px 15px;
+    padding: 70px 15px;
   }
 }
 
@@ -210,14 +210,14 @@ h2 {
   display: flex;
   flex-direction: column;
   width: 50%;
-  gap: 50px;
+  gap: 90px;
 }
 
 .project-tile-inner-mobile {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 50px;
+  gap: 80px;
 }
 
 .project-tile-show {
@@ -311,6 +311,10 @@ h2 {
   width: 75%;
   margin-left: 12.5%;
   padding-top: 60px;
+}
+
+.project-media-container > div:last-of-type {
+  padding-bottom: 100px;
 }
 
 .tile-image {

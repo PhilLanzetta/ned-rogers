@@ -35,12 +35,12 @@ const Project = ({ data }) => {
             }
             let styles
             if (isMobile) {
-              styles = { width: '100%', justifySelf: 'center', padding: '20px' }
+              styles = { width: '100%', justifySelf: 'center', padding: '15px' }
             } else {
               styles = {
                 width: `${item.desktopWidth}%`,
                 float: alignment,
-                padding: '20px',
+                padding: '15px',
                 clear: clearValue,
                 margin: marginValue,
               }
