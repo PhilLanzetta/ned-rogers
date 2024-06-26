@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from './header'
+import Fade from './fade'
 
 const Layout = ({ view, setView, children, setChangeView }) => {
   return (
@@ -9,7 +10,9 @@ const Layout = ({ view, setView, children, setChangeView }) => {
         setView={setView}
         setChangeView={setChangeView}
       ></Header>
-      <main>{children}</main>
+      <Fade>
+        <main>{children}</main>
+      </Fade>
     </>
   )
 }
