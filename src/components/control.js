@@ -2,6 +2,8 @@ import React, { forwardRef } from 'react'
 import { motion } from 'framer-motion'
 import Slider from '@mui/material/Slider'
 import back from '../images/rewind.svg'
+import play from '../images/play.svg'
+import pause from '../images/pause.svg'
 import playPauseSvg from '../images/playPause.svg'
 import forward from '../images/forward.svg'
 import sound from '../images/sound.svg'
@@ -65,9 +67,14 @@ const Control = forwardRef((props, controlRef) => {
         <div className='seek-and-play-controls'>
           <img src={back} alt='seek back' onClick={onRewind}></img>
           <img
-            src={playPauseSvg}
-            alt='play or pause'
-            onClick={onPlayPause}
+            src={play}
+            alt='play'
+            onClick={playing ? null : onPlayPause}
+          ></img>
+          <img
+            src={pause}
+            alt='pause'
+            onClick={playing ? onPlayPause : null}
           ></img>
           <img src={forward} alt='seek forward' onClick={onForward}></img>
         </div>

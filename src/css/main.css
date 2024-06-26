@@ -90,7 +90,8 @@ h2 {
 }
 
 .header-link:hover,
-.view-button:hover {
+.view-button:hover,
+.information-link:hover {
   opacity: 0.5;
   transition: all 300ms;
 }
@@ -304,7 +305,7 @@ h2 {
   width: 100%;
   border-radius: 0px;
   outline: none;
-  padding: clamp(0px, 2vw, 20px);
+  padding: 15px;
 }
 
 .project-padding {
@@ -404,11 +405,17 @@ h2 {
   display: inline-block;
 }
 
-.active-link {
+.active-link,
+.header-link,
+.view-button,
+.information-link {
   position: relative;
 }
 
-.active-link::after {
+.active-link::after,
+.header-link:hover::after,
+.view-button:hover::after,
+.information-link:hover::after {
   content: '';
   position: absolute;
   width: 100%;
@@ -419,7 +426,10 @@ h2 {
   left: 0px;
 }
 
-.active-link:hover::after {
+.active-link:hover::after,
+.header-link:hover::after,
+.view-button:hover::after,
+.information-link:hover::after {
   opacity: 0.5;
   transition: all 300ms;
 }
