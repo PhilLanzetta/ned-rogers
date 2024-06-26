@@ -35,7 +35,11 @@ const Project = ({ data }) => {
             }
             let styles
             if (isMobile) {
-              styles = { width: '100%', justifySelf: 'center', padding: '15px' }
+              styles = {
+                width: '100%',
+                justifySelf: 'center',
+                padding: '15px',
+              }
             } else {
               styles = {
                 width: `${item.desktopWidth}%`,
@@ -69,6 +73,7 @@ const Project = ({ data }) => {
             )
           }
         })}
+        <div className='project-padding'></div>
       </div>
     </ConditionalLayout>
   )

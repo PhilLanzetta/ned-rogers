@@ -307,14 +307,17 @@ h2 {
   padding: clamp(0px, 2vw, 20px);
 }
 
+.project-padding {
+  height: 80px;
+  width: 100%;
+  float: left;
+  clear: both;
+}
+
 .project-media-container {
   width: 75%;
   margin-left: 12.5%;
   padding-top: 60px;
-}
-
-.project-media-container > div:last-of-type {
-  padding-bottom: 100px;
 }
 
 .tile-image {
