@@ -13,6 +13,7 @@ const ProjectTile = ({ tile, mobile }) => {
     desktopWidth,
     desktopAlignment,
     featuredVideo,
+    videoPosterImage,
     project,
   } = tile
   const elementRef = useRef(null)
@@ -55,7 +56,7 @@ const ProjectTile = ({ tile, mobile }) => {
         className={isOnScreen ? 'project-tile-show' : 'project-tile-hide'}
       >
         {featuredVideo ? (
-          <VideoTile id={featuredVideo} slug={project.slug} aspectRatio={project.media[0].aspectRatio}></VideoTile>
+          <VideoTile id={featuredVideo} slug={project.slug} aspectRatio={project.media[0].aspectRatio} videoPoster={videoPosterImage}></VideoTile>
         ) : (
           <GatsbyImage
             image={featuredImage.gatsbyImageData}

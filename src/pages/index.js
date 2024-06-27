@@ -106,6 +106,10 @@ export const query = graphql`
           description
         }
         featuredVideo
+        videoPosterImage {
+          gatsbyImageData
+          description
+        }
         project {
           slug
           id
