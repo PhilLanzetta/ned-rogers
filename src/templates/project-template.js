@@ -13,68 +13,68 @@ const Project = ({ data }) => {
 
   return (
     <ConditionalLayout id={id}>
-      <h2 className='page-title'>{title}</h2>
-      <div className='project-media-container'>
-        {media.map((item) => {
-          if (item.imageMediaId) {
-            let alignment
-            let clearValue
-            let marginValue
-            if (item.desktopAlignment === 'left') {
-              alignment = 'left'
-              clearValue = 'both'
-              marginValue = '0'
-            } else if (item.desktopAlignment === 'right') {
-              alignment = 'right'
-              clearValue = 'none'
-              marginValue = '0'
-            } else {
-              alignment = 'center'
-              clearValue = 'both'
-              marginValue = '0 auto'
-            }
-            let styles
-            if (isMobile) {
-              styles = {
-                width: '100%',
-                justifySelf: 'center',
-                padding: '15px',
+        <h2 className='page-title'>{title}</h2>
+        <div className='project-media-container'>
+          {media.map((item) => {
+            if (item.imageMediaId) {
+              let alignment
+              let clearValue
+              let marginValue
+              if (item.desktopAlignment === 'left') {
+                alignment = 'left'
+                clearValue = 'both'
+                marginValue = '0'
+              } else if (item.desktopAlignment === 'right') {
+                alignment = 'right'
+                clearValue = 'none'
+                marginValue = '0'
+              } else {
+                alignment = 'center'
+                clearValue = 'both'
+                marginValue = '0 auto'
               }
-            } else {
-              styles = {
-                width: `${item.desktopWidth}%`,
-                float: alignment,
-                padding: '15px',
-                clear: clearValue,
-                margin: marginValue,
+              let styles
+              if (isMobile) {
+                styles = {
+                  width: '100%',
+                  justifySelf: 'center',
+                  padding: '15px',
+                }
+              } else {
+                styles = {
+                  width: `${item.desktopWidth}%`,
+                  float: alignment,
+                  padding: '15px',
+                  clear: clearValue,
+                  margin: marginValue,
+                }
               }
+              return (
+                <div key={item.imageMediaId} style={styles}>
+                  <Fade>
+                    <GatsbyImage
+                      image={item.image.gatsbyImageData}
+                      alt={item.image.description}
+                    ></GatsbyImage>
+                  </Fade>
+                </div>
+              )
+            } else {
+              return (
+                <div style={{ padding: '20px' }} key={item.videoMediaId}>
+                  <Fade>
+                    <VideoPlayer
+                      title={item.title}
+                      videoId={item.videoId}
+                      aspectRatio={item.aspectRatio}
+                    ></VideoPlayer>
+                  </Fade>
+                </div>
+              )
             }
-            return (
-              <div key={item.imageMediaId} style={styles}>
-                <Fade>
-                  <GatsbyImage
-                    image={item.image.gatsbyImageData}
-                    alt={item.image.description}
-                  ></GatsbyImage>
-                </Fade>
-              </div>
-            )
-          } else {
-            return (
-              <div style={{ padding: '20px' }} key={item.videoMediaId}>
-                <Fade>
-                  <VideoPlayer
-                    title={item.title}
-                    videoId={item.videoId}
-                    aspectRatio={item.aspectRatio}
-                  ></VideoPlayer>
-                </Fade>
-              </div>
-            )
-          }
-        })}
-        <div className='project-padding'></div>
-      </div>
+          })}
+          <div className='project-padding'></div>
+        </div>
     </ConditionalLayout>
   )
 }
