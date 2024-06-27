@@ -189,6 +189,7 @@ h2 {
 .tile-page {
   padding: 45px;
   padding-bottom: 200px;
+  transition: all 1s;
 }
 
 .project-tile:hover .project-tile-title {
@@ -228,6 +229,11 @@ h2 {
 
 .project-tile-hide {
   opacity: 0;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: all 1s;
 }
 
 @keyframes blurOn {

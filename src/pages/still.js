@@ -24,6 +24,7 @@ const Still = ({ data }) => {
   const isMobile = width < 900
   const [view, setView] = useState('grid')
   const [changeView, setChangeView] = useState(false)
+  const [fadeOut, setFadeOut] = useState(false)
 
   useEffect(() => {
     if (localStorage.getItem('view')) {
@@ -34,8 +35,13 @@ const Still = ({ data }) => {
   }, [])
 
   return (
-    <Layout view={view} setView={setView} setChangeView={setChangeView}>
-      <div className='tile-page'>
+    <Layout
+      view={view}
+      setView={setView}
+      setChangeView={setChangeView}
+      setFade={setFadeOut}
+    >
+      <div className={`tile-page ${fadeOut ? 'fade-out' : ''}`}>
         {view === 'grid' ? (
           isMobile ? (
             <div className='project-tile-inner-mobile'>

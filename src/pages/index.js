@@ -5,6 +5,7 @@ import useWindowSize from '../utils/useWindowSize'
 import ProjectTile from '../components/projectTile'
 import ProjectListing from '../components/projectListing'
 import { Fade } from 'react-awesome-reveal'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const IndexPage = ({ data }) => {
   const allNodes = data.contentfulHomePage.tiles
@@ -22,6 +23,7 @@ const IndexPage = ({ data }) => {
   const isMobile = width < 900
   const [view, setView] = useState('grid')
   const [changeView, setChangeView] = useState(false)
+  const [fadeOut, setFadeOut] = useState(false)
 
   useEffect(() => {
     if (localStorage.getItem('view')) {
@@ -32,8 +34,8 @@ const IndexPage = ({ data }) => {
   }, [])
 
   return (
-    <Layout setChangeView={setChangeView} view={view} setView={setView}>
-      <div className='tile-page'>
+    <Layout setChangeView={setChangeView} view={view} setView={setView} setFade={setFadeOut}>
+      <div className={`tile-page ${fadeOut ? 'fade-out' : ''}`}>
         {view === 'grid' ? (
           isMobile ? (
             <div className='project-tile-inner-mobile'>

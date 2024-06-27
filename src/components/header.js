@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 import { Link as ModalLink } from 'gatsby-plugin-modal-routing-3'
 import Logo from '../images/Ned_Logo.svg'
 
-const Header = ({ view, setView, setChangeView }) => {
+const Header = ({ view, setView, setChangeView, setFade }) => {
   const { width } = useWindowSize()
   const isMobile = width < 900
 
@@ -105,7 +105,11 @@ const Header = ({ view, setView, setChangeView }) => {
             className='logo-link'
             onClick={() => {
               localStorage.setItem('view', 'grid')
-              setView('grid')
+              setFade(true)
+              setTimeout(() => {
+                setView('grid')
+                setFade(false)
+              }, 1000)
             }}
           >
             <img src={Logo} alt='Ned Rogers'></img>
@@ -117,7 +121,11 @@ const Header = ({ view, setView, setChangeView }) => {
               }
               onClick={() => {
                 localStorage.setItem('view', 'grid')
-                setView('grid')
+                setFade(true)
+                setTimeout(() => {
+                  setView('grid')
+                  setFade(false)
+                }, 1000)
               }}
             >
               Grid
@@ -128,8 +136,11 @@ const Header = ({ view, setView, setChangeView }) => {
               }
               onClick={() => {
                 localStorage.setItem('view', 'list')
-                setView('list')
-                setChangeView(true)
+                setFade(true)
+                setTimeout(() => {
+                  setView('list')
+                  setFade(false)
+                }, 1000)
               }}
             >
               List
