@@ -10,9 +10,7 @@ const Layout = ({ view, setView, children, setChangeView }) => {
         setView={setView}
         setChangeView={setChangeView}
       ></Header>
-      <Fade>
-        <main>{children}</main>
-      </Fade>
+      <main>{children}</main>
     </>
   )
 }

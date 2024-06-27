@@ -49,7 +49,6 @@ module.exports = {
               padding: '0px',
             },
           },
-          closeTimeoutMS: 1000,
           preventScroll: true,
           htmlOpenClassName: 'ReactModal__Html--open',
         },

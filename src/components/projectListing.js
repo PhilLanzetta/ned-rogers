@@ -6,7 +6,7 @@ import useWindowSize from '../utils/useWindowSize'
 
 const ProjectListing = ({ listing }) => {
   const [active, setActive] = useState(false)
-  const { title, featuredImage, featuredVideo, project } = listing
+  const { title, featuredImage, featuredVideo, project, videoPosterImage } = listing
   const { width } = useWindowSize()
   const isMobile = width < 601
 
@@ -35,6 +35,7 @@ const ProjectListing = ({ listing }) => {
               <VideoListing
                 id={featuredVideo}
                 aspectRatio={project.media[0].aspectRatio}
+                videoPoster={videoPosterImage}
               ></VideoListing>
             </div>
           ) : (

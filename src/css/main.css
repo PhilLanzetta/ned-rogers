@@ -31,7 +31,7 @@ html {
   overflow-x: hidden;
   width: 100vw;
   height: 100vh;
-  background: #f2f2f2;
+  background: #f5f5f5;
 }
 
 a {
@@ -211,14 +211,14 @@ h2 {
   display: flex;
   flex-direction: column;
   width: 50%;
-  gap: 90px;
+  gap: 190px;
 }
 
 .project-tile-inner-mobile {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 80px;
+  gap: 100px;
 }
 
 .project-tile-show {
@@ -250,6 +250,7 @@ h2 {
 .ReactModal__Overlay--after-open {
   opacity: 1;
   z-index: 50;
+  transition: opacity 1000ms ease-out;
 }
 
 .ReactModal__Overlay--before-close {
@@ -284,6 +285,11 @@ h2 {
   transform: translateX(-50%);
   top: 40px;
   z-index: 100;
+}
+
+.poster-image {
+  height: 100%;
+  width: 100%;
 }
 
 @media screen and (max-width: 600px) {

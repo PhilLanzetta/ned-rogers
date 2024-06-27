@@ -34,6 +34,7 @@ const VideoTile = ({ id, slug, aspectRatio, videoPoster }) => {
             <GatsbyImage
               image={videoPoster?.gatsbyImageData}
               alt={videoPoster?.description}
+              className='poster-image'
             ></GatsbyImage>
           </motion.div>
         )}
