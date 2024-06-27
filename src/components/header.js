@@ -1,13 +1,15 @@
 import React from 'react'
 import useWindowSize from '../utils/useWindowSize'
 import HideOnScroll from '../utils/hideOnScroll'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 import { Link as ModalLink } from 'gatsby-plugin-modal-routing-3'
 import Logo from '../images/Ned_Logo.svg'
 
-const Header = ({ view, setView, setChangeView, setFade }) => {
+const Header = ({ view, setView, setChangeView, setFade, location }) => {
   const { width } = useWindowSize()
   const isMobile = width < 900
+
+  console.log(location)
 
   return (
     <div className='navbar'>
@@ -82,38 +84,61 @@ const Header = ({ view, setView, setChangeView, setFade }) => {
       ) : (
         <div className='desktop-link-container'>
           <div className='category-links'>
-            <Link
-              to='/motion'
-              className='header-link'
-              activeClassName='active-link'
+            <button
+              onClick={() => {
+                setFade(true)
+                setTimeout(() => {
+                  navigate('/motion')
+                }, 1000)
+              }}
+              className={`header-link ${
+                location?.pathname === '/motion/' ? 'active-link' : ''
+              }`}
             >
               Motion
-            </Link>
-            <Link
-              to='/still'
-              className='header-link'
-              activeClassName='active-link'
+            </button>
+            <button
+              onClick={() => {
+                setFade(true)
+                setTimeout(() => {
+                  navigate('/still')
+                }, 1000)
+              }}
+              className={`header-link ${
+                location?.pathname === '/still/' ? 'active-link' : ''
+              }`}
             >
               Still
-            </Link>
-            <Link to='/' className='header-link' activeClassName='active-link'>
+            </button>
+            <button
+              onClick={() => {
+                setFade(true)
+                setTimeout(() => {
+                  navigate('/')
+                }, 1000)
+              }}
+              className={`header-link ${
+                location?.pathname === '/' ? 'active-link' : ''
+              }`}
+            >
               All
-            </Link>
+            </button>
           </div>
-          <Link
+          <button
             to='/'
             className='logo-link'
             onClick={() => {
               localStorage.setItem('view', 'grid')
               setFade(true)
               setTimeout(() => {
+                navigate('/')
                 setView('grid')
                 setFade(false)
               }, 1000)
             }}
           >
             <img src={Logo} alt='Ned Rogers'></img>
-          </Link>
+          </button>
           <div className='view-options'>
             <button
               className={
@@ -137,6 +162,7 @@ const Header = ({ view, setView, setChangeView, setFade }) => {
               onClick={() => {
                 localStorage.setItem('view', 'list')
                 setFade(true)
+                setChangeView(true)
                 setTimeout(() => {
                   setView('list')
                   setFade(false)

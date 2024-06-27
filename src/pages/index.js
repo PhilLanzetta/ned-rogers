@@ -5,9 +5,8 @@ import useWindowSize from '../utils/useWindowSize'
 import ProjectTile from '../components/projectTile'
 import ProjectListing from '../components/projectListing'
 import { Fade } from 'react-awesome-reveal'
-import { AnimatePresence, motion } from 'framer-motion'
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, location }) => {
   const allNodes = data.contentfulHomePage.tiles
   const leftSideNodes = data.contentfulHomePage.tiles.filter((node, index) => {
     if (index === 0 || index % 2 === 0) {
@@ -34,7 +33,7 @@ const IndexPage = ({ data }) => {
   }, [])
 
   return (
-    <Layout setChangeView={setChangeView} view={view} setView={setView} setFade={setFadeOut}>
+    <Layout setChangeView={setChangeView} view={view} setView={setView} setFade={setFadeOut} location={location}>
       <div className={`tile-page ${fadeOut ? 'fade-out' : ''}`}>
         {view === 'grid' ? (
           isMobile ? (
@@ -69,7 +68,7 @@ const IndexPage = ({ data }) => {
           )
         ) : changeView ? (
           <div className='project-list-view'>
-            <Fade cascade damping={0.05}>
+            <Fade cascade damping={0.05} delay={isMobile ? 0 : 1000}>
               {allNodes.map((node, index) => (
                 <ProjectListing
                   key={node.id + index}

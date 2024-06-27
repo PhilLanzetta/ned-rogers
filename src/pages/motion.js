@@ -6,7 +6,7 @@ import ProjectTile from '../components/projectTile'
 import ProjectListing from '../components/projectListing'
 import { Fade } from 'react-awesome-reveal'
 
-const Motion = ({ data }) => {
+const Motion = ({ data, location }) => {
   const allNodes = data.contentfulHomePage.tiles.filter(
     (tile) => tile.category === 'Motion'
   )
@@ -40,6 +40,7 @@ const Motion = ({ data }) => {
       setView={setView}
       setChangeView={setChangeView}
       setFade={setFadeOut}
+      location={location}
     >
       <div className={`tile-page ${fadeOut ? 'fade-out' : ''}`}>
         {view === 'grid' ? (
@@ -69,7 +70,7 @@ const Motion = ({ data }) => {
           )
         ) : changeView ? (
           <div className='project-list-view'>
-            <Fade cascade damping={0.05}>
+            <Fade cascade damping={0.05} delay={isMobile ? 0 : 1000}>
               {allNodes.map((node, index) => (
                 <ProjectListing
                   key={node.id + index}

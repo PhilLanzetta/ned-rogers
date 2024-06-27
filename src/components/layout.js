@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './header'
 import Fade from './fade'
 
-const Layout = ({ view, setView, children, setChangeView, setFade }) => {
+const Layout = ({ view, setView, children, setChangeView, setFade, location }) => {
   return (
     <>
       <Header
@@ -10,6 +10,7 @@ const Layout = ({ view, setView, children, setChangeView, setFade }) => {
         setView={setView}
         setChangeView={setChangeView}
         setFade={setFade}
+        location={location}
       ></Header>
       <main>{children}</main>
     </>
