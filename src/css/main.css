@@ -268,6 +268,16 @@ h2 {
   overflow: hidden;
 }
 
+.ReactModal__Content {
+  opacity: 0;
+  transition: opacity 500ms ease-out;
+  transition-delay: 300ms;
+}
+
+.ReactModal__Content--after-open {
+  opacity: 1;
+}
+
 .modal-close {
   position: fixed;
   right: 40px;
