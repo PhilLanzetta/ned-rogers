@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import useWindowSize from './useWindowSize'
 
-const HideOnScroll = ({ children }) => {
+const HideOnScroll = ({ children, classProp }) => {
   const [prevScrollPos, setPrevScrollPos] = useState(0)
   const [visible, setVisible] = useState(true)
   const { width } = useWindowSize()
@@ -33,16 +33,24 @@ const HideOnScroll = ({ children }) => {
   return (
     <>
       <div
-        className={`mobile-options ${
-          visible ? 'mobile-options-show' : 'mobile-options-hide'
-        }`}
+        className={
+          isMobile
+            ? `mobile-options ${
+                visible ? 'mobile-options-show' : 'mobile-options-hide'
+              }`
+            : `${classProp} ${visible ? 'show' : 'hide'}`
+        }
       >
         {children}
       </div>
       <div
-        className={`mobile-nav-background ${
-          visible ? 'mobile-options-show' : 'mobile-options-hide'
-        }`}
+        className={
+          isMobile
+            ? `mobile-nav-background ${
+                visible ? 'mobile-options-show' : 'mobile-options-hide'
+              }`
+            : ''
+        }
       ></div>
     </>
   )

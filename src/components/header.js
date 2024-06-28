@@ -83,59 +83,59 @@ const Header = ({ view, setView, setChangeView, setFade, location }) => {
         </div>
       ) : (
         <div className='desktop-link-container'>
-          <div className='category-links'>
-            <button
-              onClick={
-                view === 'grid'
-                  ? () => {
-                      setFade(true)
-                      setTimeout(() => {
-                        navigate('/motion')
-                      }, 700)
-                    }
-                  : () => navigate('/motion')
-              }
-              className={`header-link ${
-                location?.pathname === '/motion/' ? 'active-link' : ''
-              }`}
-            >
-              Motion
-            </button>
-            <button
-              onClick={
-                view === 'grid'
-                  ? () => {
-                      setFade(true)
-                      setTimeout(() => {
-                        navigate('/still')
-                      }, 700)
-                    }
-                  : () => navigate('/still/')
-              }
-              className={`header-link ${
-                location?.pathname === '/still/' ? 'active-link' : ''
-              }`}
-            >
-              Still
-            </button>
-            <button
-              onClick={
-                view === 'grid'
-                  ? () => {
-                      setFade(true)
-                      setTimeout(() => {
-                        navigate('/')
-                      }, 700)
-                    }
-                  : () => navigate('/')
-              }
-              className={`header-link ${
-                location?.pathname === '/' ? 'active-link' : ''
-              }`}
-            >
-              All
-            </button>
-          </div>
+          <HideOnScroll classProp='category-links'>
+              <button
+                onClick={
+                  view === 'grid'
+                    ? () => {
+                        setFade(true)
+                        setTimeout(() => {
+                          navigate('/motion')
+                        }, 700)
+                      }
+                    : () => navigate('/motion')
+                }
+                className={`header-link ${
+                  location?.pathname === '/motion/' ? 'active-link' : ''
+                }`}
+              >
+                Motion
+              </button>
+              <button
+                onClick={
+                  view === 'grid'
+                    ? () => {
+                        setFade(true)
+                        setTimeout(() => {
+                          navigate('/still')
+                        }, 700)
+                      }
+                    : () => navigate('/still/')
+                }
+                className={`header-link ${
+                  location?.pathname === '/still/' ? 'active-link' : ''
+                }`}
+              >
+                Still
+              </button>
+              <button
+                onClick={
+                  view === 'grid'
+                    ? () => {
+                        setFade(true)
+                        setTimeout(() => {
+                          navigate('/')
+                        }, 700)
+                      }
+                    : () => navigate('/')
+                }
+                className={`header-link ${
+                  location?.pathname === '/' ? 'active-link' : ''
+                }`}
+              >
+                All
+              </button>
+          </HideOnScroll>
           <button
             to='/'
             className='logo-link'
@@ -151,44 +151,44 @@ const Header = ({ view, setView, setChangeView, setFade, location }) => {
           >
             <img src={Logo} alt='Ned Rogers'></img>
           </button>
-          <div className='view-options'>
-            <button
-              className={
-                view === 'grid' ? 'view-button active-link' : 'view-button'
-              }
-              onClick={() => {
-                localStorage.setItem('view', 'grid')
-                setFade(true)
-                setTimeout(() => {
-                  setView('grid')
-                  setFade(false)
-                }, 700)
-              }}
-            >
-              Grid
-            </button>
-            <button
-              className={
-                view === 'list' ? 'view-button active-link' : 'view-button'
-              }
-              onClick={() => {
-                localStorage.setItem('view', 'list')
-                setFade(true)
-                setChangeView(true)
-                setTimeout(() => {
-                  setView('list')
-                  setFade(false)
-                }, 700)
-              }}
-            >
-              List
-            </button>
-          </div>
-          <div className='information'>
-            <ModalLink to='/about' asModal className='information-link'>
-              Information
-            </ModalLink>
-          </div>
+          <HideOnScroll classProp="view-options">
+              <button
+                className={
+                  view === 'grid' ? 'view-button active-link' : 'view-button'
+                }
+                onClick={() => {
+                  localStorage.setItem('view', 'grid')
+                  setFade(true)
+                  setTimeout(() => {
+                    setView('grid')
+                    setFade(false)
+                  }, 700)
+                }}
+              >
+                Grid
+              </button>
+              <button
+                className={
+                  view === 'list' ? 'view-button active-link' : 'view-button'
+                }
+                onClick={() => {
+                  localStorage.setItem('view', 'list')
+                  setFade(true)
+                  setChangeView(true)
+                  setTimeout(() => {
+                    setView('list')
+                    setFade(false)
+                  }, 700)
+                }}
+              >
+                List
+              </button>
+            </HideOnScroll>
+            <HideOnScroll classProp="information">
+              <ModalLink to='/about' asModal className='information-link'>
+                Information
+              </ModalLink>
+          </HideOnScroll>
         </div>
       )}
     </div>

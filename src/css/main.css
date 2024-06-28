@@ -147,12 +147,14 @@ h2 {
   z-index: 1;
 }
 
-.mobile-options-show {
+.mobile-options-show,
+.show {
   opacity: 1;
   transition: all 700ms;
 }
 
-.mobile-options-hide {
+.mobile-options-hide,
+.hide {
   opacity: 0;
   transition: all 700ms;
 }

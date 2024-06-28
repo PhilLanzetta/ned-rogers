@@ -53,10 +53,19 @@ const ProjectTile = ({ tile, mobile }) => {
       <div
         id={project.id}
         ref={elementRef}
-        className={isOnScreen ? 'project-tile-show' : 'project-tile-hide'}
+        className={
+          isOnScreen
+            ? 'project-tile-show'
+            : 'project-tile-hide'
+        }
       >
         {featuredVideo ? (
-          <VideoTile id={featuredVideo} slug={project.slug} aspectRatio={project.media[0].aspectRatio} videoPoster={videoPosterImage}></VideoTile>
+          <VideoTile
+            id={featuredVideo}
+            slug={project.slug}
+            aspectRatio={project.media[0].aspectRatio}
+            videoPoster={videoPosterImage}
+          ></VideoTile>
         ) : (
           <GatsbyImage
             image={featuredImage.gatsbyImageData}
