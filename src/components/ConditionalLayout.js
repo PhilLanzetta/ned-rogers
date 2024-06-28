@@ -15,7 +15,7 @@ const ConditionalLayout = ({ children, id }) => {
                 setFadeOut(true)
                 document
                   .getElementsByClassName('ReactModal__Overlay')[0]
-                  .classList.add('fade-out')
+                  .classList.add('fade-out-slow')
                 setTimeout(() => {
                   navigate(closeTo, { state: { noScroll: true } })
                 }, 1000)
@@ -34,7 +34,7 @@ const ConditionalLayout = ({ children, id }) => {
                 setFadeOut(true)
                 setTimeout(() => {
                   navigate(`/#${id}`)
-                }, 1000)
+                }, 700)
               }}
             >
               <img src={x} alt='close' className='close-icon'></img>

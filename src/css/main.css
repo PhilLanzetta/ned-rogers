@@ -234,6 +234,11 @@ h2 {
 }
 
 .fade-out {
+  opacity: 0;
+  transition: all 700ms;
+}
+
+.fade-out-slow {
   opacity: 0 !important;
   transition: all 1s;
 }

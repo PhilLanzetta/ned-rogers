@@ -70,7 +70,7 @@ const Still = ({ data, location }) => {
           )
         ) : changeView ? (
           <div className='project-list-view'>
-            <Fade cascade damping={0.05} delay={isMobile ? 0 : 1000}>
+            <Fade cascade damping={0.05} delay={isMobile ? 0 : 700}>
               {allNodes.map((node, index) => (
                 <ProjectListing
                   key={node.id + index}

@@ -85,12 +85,16 @@ const Header = ({ view, setView, setChangeView, setFade, location }) => {
         <div className='desktop-link-container'>
           <div className='category-links'>
             <button
-              onClick={() => {
-                setFade(true)
-                setTimeout(() => {
-                  navigate('/motion')
-                }, 1000)
-              }}
+              onClick={
+                view === 'grid'
+                  ? () => {
+                      setFade(true)
+                      setTimeout(() => {
+                        navigate('/motion')
+                      }, 700)
+                    }
+                  : () => navigate('/motion')
+              }
               className={`header-link ${
                 location?.pathname === '/motion/' ? 'active-link' : ''
               }`}
@@ -98,12 +102,16 @@ const Header = ({ view, setView, setChangeView, setFade, location }) => {
               Motion
             </button>
             <button
-              onClick={() => {
-                setFade(true)
-                setTimeout(() => {
-                  navigate('/still')
-                }, 1000)
-              }}
+              onClick={
+                view === 'grid'
+                  ? () => {
+                      setFade(true)
+                      setTimeout(() => {
+                        navigate('/still')
+                      }, 700)
+                    }
+                  : () => navigate('/still/')
+              }
               className={`header-link ${
                 location?.pathname === '/still/' ? 'active-link' : ''
               }`}
@@ -111,12 +119,16 @@ const Header = ({ view, setView, setChangeView, setFade, location }) => {
               Still
             </button>
             <button
-              onClick={() => {
-                setFade(true)
-                setTimeout(() => {
-                  navigate('/')
-                }, 1000)
-              }}
+              onClick={
+                view === 'grid'
+                  ? () => {
+                      setFade(true)
+                      setTimeout(() => {
+                        navigate('/')
+                      }, 700)
+                    }
+                  : () => navigate('/')
+              }
               className={`header-link ${
                 location?.pathname === '/' ? 'active-link' : ''
               }`}
@@ -134,7 +146,7 @@ const Header = ({ view, setView, setChangeView, setFade, location }) => {
                 navigate('/')
                 setView('grid')
                 setFade(false)
-              }, 1000)
+              }, 700)
             }}
           >
             <img src={Logo} alt='Ned Rogers'></img>
@@ -150,7 +162,7 @@ const Header = ({ view, setView, setChangeView, setFade, location }) => {
                 setTimeout(() => {
                   setView('grid')
                   setFade(false)
-                }, 1000)
+                }, 700)
               }}
             >
               Grid
@@ -166,7 +178,7 @@ const Header = ({ view, setView, setChangeView, setFade, location }) => {
                 setTimeout(() => {
                   setView('list')
                   setFade(false)
-                }, 1000)
+                }, 700)
               }}
             >
               List
