@@ -1,27 +1,50 @@
-import React from 'react'
-import { Link, ModalRoutingContext } from 'gatsby-plugin-modal-routing-3'
+import React, { useState } from 'react'
+import { ModalRoutingContext } from 'gatsby-plugin-modal-routing-3'
+import { navigate } from 'gatsby'
 import x from '../images/_X_SVG.svg'
 
-const ConditionalLayout = ({ children, id }) => (
-  <ModalRoutingContext.Consumer>
-    {({ modal, closeTo }) =>
-      modal ? (
-        <>
-          <Link to={closeTo} className='modal-close'>
-            <img src={x} alt='close' className='close-icon'></img>
-          </Link>
-          {children}
-        </>
-      ) : (
-        <>
-          <Link className='modal-close' to={`/#${id}`}>
-            <img src={x} alt='close' className='close-icon'></img>
-          </Link>
-          <div className='page-container'>{children}</div>
-        </>
-      )
-    }
-  </ModalRoutingContext.Consumer>
-)
+const ConditionalLayout = ({ children, id }) => {
+  const [fadeOut, setFadeOut] = useState(false)
+  return (
+    <ModalRoutingContext.Consumer>
+      {({ modal, closeTo }) =>
+        modal ? (
+          <div className={fadeOut ? 'fade-out' : ''}>
+            <button
+              onClick={() => {
+                setFadeOut(true)
+                document
+                  .getElementsByClassName('ReactModal__Overlay')[0]
+                  .classList.add('fade-out')
+                setTimeout(() => {
+                  navigate(closeTo, { state: { noScroll: true } })
+                }, 1000)
+              }}
+              className='modal-close'
+            >
+              <img src={x} alt='close' className='close-icon'></img>
+            </button>
+            {children}
+          </div>
+        ) : (
+          <div className={fadeOut ? 'fade-out' : ''}>
+            <button
+              className='modal-close'
+              onClick={() => {
+                setFadeOut(true)
+                setTimeout(() => {
+                  navigate(`/#${id}`)
+                }, 1000)
+              }}
+            >
+              <img src={x} alt='close' className='close-icon'></img>
+            </button>
+            <div className='page-container'>{children}</div>
+          </div>
+        )
+      }
+    </ModalRoutingContext.Consumer>
+  )
+}
 
 export default ConditionalLayout

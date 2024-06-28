@@ -234,7 +234,7 @@ h2 {
 }
 
 .fade-out {
-  opacity: 0;
+  opacity: 0 !important;
   transition: all 1s;
 }
 
@@ -258,10 +258,6 @@ h2 {
 .ReactModal__Overlay--after-open {
   opacity: 1;
   z-index: 50;
-}
-
-.ReactModal__Overlay--before-close {
-  opacity: 0;
 }
 
 .ReactModal__Html--open {
@@ -328,7 +324,7 @@ h2 {
   width: 100%;
   border-radius: 0px;
   outline: none;
-  padding: 15px;
+  padding: 0;
 }
 
 .project-padding {
