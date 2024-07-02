@@ -560,6 +560,10 @@ h2 {
   margin-right: 5%;
 }
 
+.about-bio p {
+  margin-bottom: 20px;
+}
+
 .about-contact {
   width: 20%;
   text-transform: uppercase;
