@@ -42,6 +42,7 @@ const Motion = ({ data, location }) => {
       setFade={setFadeOut}
       location={location}
     >
+      <div id='top'></div>
       <div className={`tile-page ${fadeOut ? 'fade-out' : ''}`}>
         {view === 'grid' ? (
           isMobile ? (

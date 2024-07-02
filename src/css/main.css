@@ -569,6 +569,12 @@ h2 {
   text-transform: uppercase;
 }
 
+#top {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 @media screen and (max-width: 900px) {
   .about-page {
     display: flex;

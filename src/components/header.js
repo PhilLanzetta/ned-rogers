@@ -66,6 +66,7 @@ const Header = ({ view, setView, setChangeView, setFade, location }) => {
                 onClick={() => {
                   localStorage.setItem('view', 'list')
                   setView('list')
+                  navigate('#top')
                   setChangeView(true)
                 }}
               >
@@ -159,6 +160,7 @@ const Header = ({ view, setView, setChangeView, setFade, location }) => {
                   setFade(true)
                   setTimeout(() => {
                     setView('grid')
+                    navigate('#top')
                     setFade(false)
                   }, 700)
                 }}
@@ -172,6 +174,7 @@ const Header = ({ view, setView, setChangeView, setFade, location }) => {
                 onClick={() => {
                   localStorage.setItem('view', 'list')
                   setFade(true)
+                  navigate('#top')
                   setChangeView(true)
                   setTimeout(() => {
                     setView('list')

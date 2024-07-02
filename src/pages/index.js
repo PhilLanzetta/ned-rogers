@@ -33,7 +33,14 @@ const IndexPage = ({ data, location }) => {
   }, [])
 
   return (
-    <Layout setChangeView={setChangeView} view={view} setView={setView} setFade={setFadeOut} location={location}>
+    <Layout
+      setChangeView={setChangeView}
+      view={view}
+      setView={setView}
+      setFade={setFadeOut}
+      location={location}
+    >
+      <div id='top'></div>
       <div className={`tile-page ${fadeOut ? 'fade-out' : ''}`}>
         {view === 'grid' ? (
           isMobile ? (
