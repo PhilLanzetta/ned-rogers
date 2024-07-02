@@ -18,7 +18,7 @@ const HideOnScroll = ({ children, classProp }) => {
       if (isMobile) {
         setVisible(currentScrollPos < 50)
         setPrevScrollPos(currentScrollPos)
-      } else if (currentScrollPos < 100) {
+      } else if (currentScrollPos < 10) {
         setVisible(true)
         setPrevScrollPos(currentScrollPos)
       } else {
