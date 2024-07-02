@@ -21,7 +21,6 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
     playbackRate: 1.0,
     played: 0,
     seeking: false,
-    buffer: true,
   })
 
   const [fullScreenState, setFullScreenState] = useState(false)
@@ -30,7 +29,7 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
   const isMobile = height > width ? width < 769 : width < 900
 
   //Destructuring the properties from the videoState
-  const { playing, muted, volume, playbackRate, played, seeking, buffer } =
+  const { playing, muted, volume, playbackRate, played, seeking } =
     videoState
 
   const currentTime = videoPlayerRef.current
@@ -62,7 +61,6 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
     videoPlayerRef.current.seekTo(videoPlayerRef.current.getCurrentTime() + 5)
   }
 
-  //console.log("========", (controlRef.current.style.visibility = "false"));
   const progressHandler = (state) => {
     if (count > 5) {
       controlRef.current.style.visibility = 'hidden'
@@ -82,8 +80,6 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
   }
 
   const seekMouseUpHandler = (e, value) => {
-    console.log(value)
-
     setVideoState({ ...videoState, seeking: false })
     videoPlayerRef.current.seekTo(value / 100)
   }
@@ -123,16 +119,6 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
     count = 0
   }
 
-  const bufferStartHandler = () => {
-    console.log('Bufering.......')
-    setVideoState({ ...videoState, buffer: true })
-  }
-
-  const bufferEndHandler = () => {
-    console.log('buffering stoped ,,,,,,play')
-    setVideoState({ ...videoState, buffer: false })
-  }
-
   const handleClickFullscreen = () => {
     if (!fullScreenState && !isMobile && screenfull.isEnabled) {
       screenfull.request(document.getElementById(videoId))
@@ -168,8 +154,6 @@ const VideoPlayer = ({ title, videoId, aspectRatio }) => {
         volume={volume}
         muted={muted}
         onProgress={progressHandler}
-        onBuffer={bufferStartHandler}
-        onBufferEnd={bufferEndHandler}
         onEnded={() => videoPlayerRef.current.seekTo(0)}
       ></ReactPlayer>
       {!isMobile && (

@@ -26,6 +26,7 @@ const Control = forwardRef((props, controlRef) => {
     currentTime,
     onMouseSeekDown,
   } = props
+
   return (
     <div className='video-controls' ref={controlRef}>
       <div className='progress-bar'>

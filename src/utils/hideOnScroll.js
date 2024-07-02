@@ -10,13 +10,16 @@ const HideOnScroll = ({ children, classProp }) => {
   const handleScroll = () => {
     const currentScrollPos = window.scrollY
     if (prevScrollPos > currentScrollPos) {
-      if (prevScrollPos - currentScrollPos > 75 || currentScrollPos < 100) {
+      if (currentScrollPos < 100 || prevScrollPos - currentScrollPos > 75) {
         setVisible(true)
         setPrevScrollPos(currentScrollPos)
       }
     } else {
       if (isMobile) {
         setVisible(currentScrollPos < 50)
+        setPrevScrollPos(currentScrollPos)
+      } else if (currentScrollPos < 100) {
+        setVisible(true)
         setPrevScrollPos(currentScrollPos)
       } else {
         setVisible(false)

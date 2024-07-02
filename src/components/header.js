@@ -9,8 +9,6 @@ const Header = ({ view, setView, setChangeView, setFade, location }) => {
   const { width } = useWindowSize()
   const isMobile = width < 900
 
-  console.log(location)
-
   return (
     <div className='navbar'>
       {isMobile ? (
