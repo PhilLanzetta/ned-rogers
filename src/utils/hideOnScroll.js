@@ -10,7 +10,7 @@ const HideOnScroll = ({ children, classProp }) => {
   const handleScroll = () => {
     const currentScrollPos = window.scrollY
     if (prevScrollPos > currentScrollPos) {
-      if (prevScrollPos - currentScrollPos > 200 || currentScrollPos < 100) {
+      if (prevScrollPos - currentScrollPos > 75 || currentScrollPos < 100) {
         setVisible(true)
         setPrevScrollPos(currentScrollPos)
       }
@@ -46,9 +46,9 @@ const HideOnScroll = ({ children, classProp }) => {
       <div
         className={
           isMobile
-            ? `mobile-nav-background ${
-                visible ? 'mobile-options-show' : 'mobile-options-hide'
-              }`
+            ? visible
+              ? 'mobile-options-show'
+              : 'mobile-options-hide'
             : ''
         }
       ></div>
