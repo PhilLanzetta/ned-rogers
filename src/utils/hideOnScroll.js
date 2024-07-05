@@ -41,7 +41,7 @@ const HideOnScroll = ({ children, classProp }) => {
             ? `mobile-options ${
                 visible ? 'mobile-options-show' : 'mobile-options-hide'
               }`
-            : `${classProp} ${visible ? 'show' : 'hide'}`
+            : `${classProp || 'mobile-options'} ${visible ? 'show' : 'hide'}`
         }
       >
         {children}

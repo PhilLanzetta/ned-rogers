@@ -110,13 +110,10 @@ h2 {
 }
 
 .mobile-logo-link {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: fixed;
   top: 24px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 100;
 }
 
@@ -135,7 +132,6 @@ h2 {
   z-index: 10;
   transition: all 700ms;
 }
-
 
 .mobile-options-show,
 .show {

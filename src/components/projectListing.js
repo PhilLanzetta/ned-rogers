@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'gatsby-plugin-modal-routing-3'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import VideoListing from './videoListing'
@@ -6,9 +6,19 @@ import useWindowSize from '../utils/useWindowSize'
 
 const ProjectListing = ({ listing }) => {
   const [active, setActive] = useState(false)
-  const { title, featuredImage, featuredVideo, project, videoPosterImage } = listing
+  const { title, featuredImage, featuredVideo, project, videoPosterImage } =
+    listing
   const { width } = useWindowSize()
-  const isMobile = width < 601
+  let isMobile
+
+  useEffect(() => {
+    isMobile =
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0 ||
+      navigator.msMaxTouchPoints > 0
+  }, [])
+
+  console.log(isMobile)
 
   const showTip = () => {
     setActive(true)
