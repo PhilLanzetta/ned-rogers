@@ -9,13 +9,11 @@ const ProjectListing = ({ listing }) => {
   const { title, featuredImage, featuredVideo, project, videoPosterImage } =
     listing
   const { width } = useWindowSize()
-  let isMobile = false
+  const [isMobile, setIsMobile] = useState(width < 601)
 
   useEffect(() => {
     if (window.matchMedia('(pointer: coarse)').matches) {
-      isMobile = true
-    } else if (window.matchMedia('(pointer: none)').matches) {
-      isMobile = true
+      setIsMobile(true)
     }
   }, [])
 
