@@ -9,13 +9,14 @@ const ProjectListing = ({ listing }) => {
   const { title, featuredImage, featuredVideo, project, videoPosterImage } =
     listing
   const { width } = useWindowSize()
-  let isMobile
+  let isMobile = false
 
   useEffect(() => {
-    isMobile =
-      'ontouchstart' in window ||
-      navigator.maxTouchPoints > 0 ||
-      navigator.msMaxTouchPoints > 0
+    if (window.matchMedia('(pointer: coarse)').matches) {
+      isMobile = true
+    } else if (window.matchMedia('(pointer: none)').matches) {
+      isMobile = true
+    }
   }, [])
 
   console.log(isMobile)
