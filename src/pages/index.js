@@ -75,7 +75,7 @@ const IndexPage = ({ data, location }) => {
           )
         ) : changeView ? (
           <div className='project-list-view'>
-            <Fade cascade damping={0.05} delay={isMobile ? 0 : 700} triggerOnce>
+            <Fade cascade damping={0.05} delay={isMobile ? 0 : 300} triggerOnce>
               {allNodes.map((node, index) => (
                 <ProjectListing
                   key={node.id + index}
