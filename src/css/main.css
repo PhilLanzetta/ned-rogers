@@ -292,6 +292,8 @@ h2 {
   transform: translateX(-50%);
   top: 40px;
   z-index: 100;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .poster-image {
