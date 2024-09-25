@@ -68,8 +68,8 @@ const ProjectTile = ({ tile, mobile }) => {
           ></VideoTile>
         ) : (
           <GatsbyImage
-            image={featuredImage.gatsbyImageData}
-            alt={featuredImage.description}
+            image={featuredImage?.gatsbyImageData}
+            alt={featuredImage?.description}
             className='tile-image'
           ></GatsbyImage>
         )}
