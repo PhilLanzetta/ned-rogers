@@ -67,6 +67,10 @@ const Shop = ({ data }) => {
     ),
   }
 
+  const handleClick = () => {
+    sliderRef.creent && sliderRef.current.slickNext()
+  }
+
   return (
     <ConditionalLayout>
       <div className='product-page'>
@@ -81,7 +85,11 @@ const Shop = ({ data }) => {
                 >
                   {product.media.map((item) => {
                     return (
-                      <div key={item.id}>
+                      <button
+                        key={item.id}
+                        onClick={() => sliderRef.current.slickNext()}
+                        onKeyDown={() => sliderRef.current.slickNext()}
+                      >
                         <div className='product-image-slide'>
                           <GatsbyImage
                             alt={item.image.altText}
@@ -93,7 +101,7 @@ const Shop = ({ data }) => {
                             className='product-image'
                           ></GatsbyImage>
                         </div>
-                      </div>
+                      </button>
                     )
                   })}
                 </Slider>
