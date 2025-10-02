@@ -652,7 +652,6 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ece6e6;
   height: calc(80vh - 60px);
   width: 100%;
 }
@@ -699,13 +698,13 @@ h2 {
   }
 
   .product-slider {
-    height: calc(60vh - 40px);
+    height: auto;
     width: 100%;
     margin-bottom: 40px;
   }
 
   .product-image-slide {
-    height: calc(60vh - 60px);
+    height: auto;
   }
 }
 

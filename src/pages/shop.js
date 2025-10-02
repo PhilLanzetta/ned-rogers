@@ -67,10 +67,6 @@ const Shop = ({ data }) => {
     ),
   }
 
-  const handleClick = () => {
-    sliderRef.creent && sliderRef.current.slickNext()
-  }
-
   return (
     <ConditionalLayout>
       <div className='product-page'>
