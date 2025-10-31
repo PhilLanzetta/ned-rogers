@@ -6,7 +6,7 @@ import useWindowSize from '../utils/useWindowSize'
 
 const ProjectListing = ({ listing }) => {
   const [active, setActive] = useState(false)
-  const { title, featuredImage, featuredVideo, project, videoPosterImage } =
+  const { title, featuredImage, featuredVideo, project, videoPosterImage, product } =
     listing
   const { width } = useWindowSize()
   const [isMobile, setIsMobile] = useState(width < 601)
@@ -17,8 +17,6 @@ const ProjectListing = ({ listing }) => {
     }
   }, [])
 
-  console.log(isMobile)
-
   const showTip = () => {
     setActive(true)
   }
@@ -28,7 +26,7 @@ const ProjectListing = ({ listing }) => {
   }
   return (
     <>
-      <Link to={`/${project.slug}`} asModal className='project-listing-link'>
+      <Link to={product ? '/shop' : `/${project.slug}`} asModal className='project-listing-link'>
         <p
           onMouseEnter={isMobile ? null : showTip}
           onMouseLeave={isMobile ? null : hideTip}

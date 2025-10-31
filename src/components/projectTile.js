@@ -15,6 +15,7 @@ const ProjectTile = ({ tile, mobile }) => {
     featuredVideo,
     videoPosterImage,
     project,
+    product
   } = tile
   const elementRef = useRef(null)
   const isOnScreen = useOnScreen(elementRef)
@@ -45,7 +46,7 @@ const ProjectTile = ({ tile, mobile }) => {
 
   return (
     <Link
-      to={`/${project.slug}`}
+      to={product ? '/shop' : `/${project.slug}`}
       asModal
       style={styles}
       className='project-tile'

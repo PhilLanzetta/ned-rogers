@@ -108,6 +108,7 @@ export const query = graphql`
         desktopWidth
         mobileAlignment
         mobileWidth
+        product
         title
         featuredImage {
           gatsbyImageData
